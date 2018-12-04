@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.marcinmoskala.PreferenceHolder:preferenceholder-gson-serializer-1.51">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/preferenceholder-gson-serializer-1.51.aar/eacda7cfffed1a78f77dd179618af92a/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/preferenceholder-gson-serializer-1.51.aar/eacda7cfffed1a78f77dd179618af92a/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.marcinmoskala.PreferenceHolder/preferenceholder-gson-serializer/1.51/1a02ad6652812bde426da5176440764c9897e544/preferenceholder-gson-serializer-1.51-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
