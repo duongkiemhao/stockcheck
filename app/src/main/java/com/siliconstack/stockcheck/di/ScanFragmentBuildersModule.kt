@@ -1,6 +1,7 @@
 package com.siliconstack.stockcheck.di
 
-import com.siliconstack.stockcheck.view.ui.scan.ScanResultActivity
+import com.siliconstack.stockcheck.view.ui.scan.ScanActivity
+import com.siliconstack.stockcheck.view.ui.scan.ScanResultFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -25,7 +26,7 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ScanFragmentBuildersModule {
     @ContributesAndroidInjector
-    abstract fun contributeScanResultFragment(): ScanResultActivity
+    abstract fun contributeScanResultFragment(): ScanResultFragment
 //
 //
 

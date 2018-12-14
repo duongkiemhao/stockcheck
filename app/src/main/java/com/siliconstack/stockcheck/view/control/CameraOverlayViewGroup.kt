@@ -16,6 +16,8 @@ class CameraOverlayViewGroup : FrameLayout {
     private var mBackgroundPaint: Paint? = null
     private var mCx = -1f
     private var mCy = -1f
+     var myWidth = 270F
+    var myHeight= 150F
 
     private val mTutorialColor = Color.parseColor("#99000000")
     var cameraOverlayViewGroupListener:CameraOverlayViewGroupListener?=null
@@ -60,10 +62,10 @@ class CameraOverlayViewGroup : FrameLayout {
     override fun onDraw(canvas: Canvas) {
         canvas.drawColor(mTutorialColor)
         canvas.drawRect(
-                (canvas.width - Utility.convertDPtoPIXEL(270F)) / 2,
-                (canvas.height - Utility.convertDPtoPIXEL(150F)) / 2,
-                (canvas.width - Utility.convertDPtoPIXEL(270F)) / 2 + Utility.convertDPtoPIXEL(270F),
-                (canvas.height - Utility.convertDPtoPIXEL(150F)) / 2 + Utility.convertDPtoPIXEL(150F), mBackgroundPaint!!)
+                (canvas.width -myWidth) / 2,
+                (canvas.height - myHeight) / 2,
+                (canvas.width - myWidth) / 2 +myWidth,
+                (canvas.height - myHeight) / 2 + myHeight, mBackgroundPaint!!)
 
     }
 

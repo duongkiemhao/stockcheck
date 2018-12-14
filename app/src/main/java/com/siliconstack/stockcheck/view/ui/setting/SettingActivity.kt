@@ -1,5 +1,6 @@
 package com.siliconstack.stockcheck.view.ui.setting
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.graphics.Color
@@ -18,19 +19,15 @@ import android.view.View
 import android.widget.AdapterView
 import com.afollestad.materialdialogs.GravityEnum
 import com.afollestad.materialdialogs.MaterialDialog
-import com.siliconstack.stockcheck.model.FloorModel
-import com.siliconstack.stockcheck.model.LocationModel
-import com.siliconstack.stockcheck.model.OperatorModel
-import com.siliconstack.stockcheck.model.SettingDTO
 import com.siliconstack.stockcheck.view.ui.base.BaseActivity
 import com.siliconstack.stockcheck.view.ui.MainActivity
 import com.siliconstack.stockcheck.view.ui.MainActivityListener
 import android.widget.ArrayAdapter
 import android.widget.TextView
-
-
-
-
+import android.widget.Toast
+import com.siliconstack.stockcheck.model.*
+import es.dmoral.toasty.Toasty
+import org.jetbrains.anko.collections.forEachReversedWithIndex
 
 
 class SettingActivity: BaseActivity() , MainActivityListener, SettingListener {
@@ -147,17 +144,17 @@ class SettingActivity: BaseActivity() , MainActivityListener, SettingListener {
                     if(!dialog.inputEditText?.text.toString().trim().isEmpty()) {
                         when (selectedPos) {
                             0 -> {
-                                mainViewModel.locationDAO.addRow(LocationModel(dialog.inputEditText?.text.toString(), 0))
-                                refreshListLocation()
+                                val locationModel=LocationModel(dialog.inputEditText?.text.toString(),0)
+                                addLocation(locationModel)
 
                             }
                             1 -> {
-                                mainViewModel.floorDAO.addRow(FloorModel(dialog.inputEditText?.text.toString(), 0))
-                                refreshListFloor()
+                                val floorModel=FloorModel(dialog.inputEditText?.text.toString(),0)
+                                addFloor(floorModel)
                             }
                             2 -> {
-                                mainViewModel.nameDAO.addRow(OperatorModel(dialog.inputEditText?.text.toString(), 0))
-                                refreshListName()
+                                val operatorModel=OperatorModel(dialog.inputEditText?.text.toString(),0)
+                                addOperator(operatorModel)
                             }
                         }
                     }
@@ -166,6 +163,75 @@ class SettingActivity: BaseActivity() , MainActivityListener, SettingListener {
                 }
                 .build()
     }
+
+    fun addLocation(locationModel: LocationModel){
+        progressDialog.show()
+        mainViewModel.postLocation(locationModel).observe(this, Observer { it: Resource<BaseApiResponse>? ->
+            it?.let { resource: Resource<BaseApiResponse> ->
+                when (resource.status) {
+                    Resource.Status.SUCCESS -> {
+                        var list: List<LocationModel>? = resource.data as List<LocationModel>
+                        list?.forEachReversedWithIndex { i, locationModel ->
+                            mainViewModel.locationDAO.addRow(LocationModel(locationModel.name,locationModel.id))
+                            refreshListLocation()
+                            return@let
+                        }
+                    }
+                    Resource.Status.ERROR -> {
+                        Toasty.error(this@SettingActivity,resource.exception?.exceptin?.message.toString()).show()
+                    }
+                }
+            }
+            progressDialog.dismiss()
+        })
+    }
+
+
+    fun addFloor(floorModel: FloorModel){
+        progressDialog.show()
+        mainViewModel.postFloor(floorModel).observe(this, Observer { it: Resource<BaseApiResponse>? ->
+            it?.let { resource: Resource<BaseApiResponse> ->
+                when (resource.status) {
+                    Resource.Status.SUCCESS -> {
+                        var list: List<FloorModel>? = resource.data as List<FloorModel>
+                        list?.forEachReversedWithIndex { i, floorModel ->
+                            mainViewModel.floorDAO.addRow(FloorModel(floorModel.name,floorModel.id))
+                            refreshListFloor()
+                            return@let
+                        }
+                    }
+                    Resource.Status.ERROR -> {
+                        Toasty.error(this@SettingActivity,resource.exception?.exceptin?.message.toString()).show()
+                    }
+                }
+            }
+            progressDialog.dismiss()
+        })
+    }
+
+    fun addOperator(operatorModel: OperatorModel){
+        progressDialog.show()
+        mainViewModel.postOperator(operatorModel).observe(this, Observer { it: Resource<BaseApiResponse>? ->
+            it?.let { resource: Resource<BaseApiResponse> ->
+                when (resource.status) {
+                    Resource.Status.SUCCESS -> {
+                        var list: List<OperatorModel>? = resource.data as List<OperatorModel>
+                        list?.forEachReversedWithIndex { i, operatorModel ->
+                            mainViewModel.nameDAO.addRow(OperatorModel(operatorModel.name,operatorModel.id))
+                            refreshListName()
+                            return@let
+                        }
+
+                    }
+                    Resource.Status.ERROR -> {
+                        Toasty.error(this@SettingActivity,resource.exception?.exceptin?.message.toString()).show()
+                    }
+                }
+            }
+            progressDialog.dismiss()
+        })
+    }
+
     private fun setListener() {
         settingActivityBinding.btnAdd.setOnClickListener { view->
             createNewDialog()

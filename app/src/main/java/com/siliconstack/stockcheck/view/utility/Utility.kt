@@ -104,8 +104,9 @@ class Utility{
         fun createImageFile(context: Context) : File {
             // Create an image file name
             var timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date());
-            var imageFileName = "JPEG_" + timeStamp + "_";
-            var storageDir = context.cacheDir;
+            var imageFileName = "JPEG_" + timeStamp + "_"
+            //var storageDir = File("/sdcard/driver/")
+            var storageDir=context.cacheDir
             var image = File.createTempFile(
                     imageFileName,  /* prefix */
                     ".jpg",         /* suffix */
@@ -113,7 +114,7 @@ class Utility{
             );
             // Save a file: path for use with ACTION_VIEW intents
 
-            return image;
+            return image
         }
 
         fun saveBitmapToFile(bitmap: Bitmap):String?{
@@ -121,7 +122,7 @@ class Utility{
             try{
                 // Compress the bitmap and save in jpg format
                 val stream: OutputStream = FileOutputStream(file)
-                bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream)
+                bitmap.compress(Bitmap.CompressFormat.JPEG,80,stream)
                 stream.flush()
                 stream.close()
             }catch (e: IOException){

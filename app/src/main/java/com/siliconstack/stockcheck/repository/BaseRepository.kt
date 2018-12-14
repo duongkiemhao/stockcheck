@@ -17,21 +17,7 @@ open class BaseRepository{
     companion object {
         open class MyRetrofitCallback<T>(var data: MutableLiveData<Resource<T>>) : Callback<T> {
             override fun onResponse(call: Call<T>, response: Response<T>) {
-                if(response.code()==401)
-                {
-                    try {
-                        response.errorBody()?.let {
-                            val jsonObject = JSONObject(it.string())
-                            val message = jsonObject.get("Message") as String? ?: ""
-                            data.value = Resource.unauthorized(message) as Resource<T>?
 
-                        }
-                    }
-                    catch (exp:Exception){
-                        data.value= Resource.unauthorized(exp.message) as Resource<T>?
-                    }
-                }
-                else {
                     if (response.body() != null)
                         data.value = Resource.success(response.body());
                     else {
@@ -41,8 +27,7 @@ open class BaseRepository{
                             try {
                                 val jsonObject = JSONObject(response.errorBody()!!.string())
                                 if (jsonObject != null) {
-                                    errorResponse.message = jsonObject.get("Message") as String? ?: ""
-                                    data.value = Resource.info(errorResponse) as Resource<T>?
+                                    data.value = Resource.error(AppException(Exception(jsonObject.get("Message") as String? ?: "")))
                                 } else {
                                     data.value = Resource.error(AppException(Exception("Parsing exception " + jsonObject.toString())))
                                 }
@@ -53,7 +38,7 @@ open class BaseRepository{
                         } else data.value = Resource.error(AppException(Exception("Unknown exception")))
 
                     }
-                }
+
             }
 
             override fun onFailure(call: Call<T>, t: Throwable) {

@@ -20,6 +20,7 @@ package com.siliconstack.stockcheck.di
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.siliconstack.stockcheck.viewmodel.MainViewModel
+import com.siliconstack.stockcheck.viewmodel.ScanViewModel
 import com.siliconstack.stockcheck.viewmodel.ViewModelFactory
 import dagger.Binds
 import dagger.Module
@@ -35,7 +36,12 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(MainViewModel::class)
-    abstract fun bindLoginViewModel(loginViewModel: MainViewModel): ViewModel
+    abstract fun bindMainViewModel(mainViewModel: MainViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ScanViewModel::class)
+    abstract fun bindScanViewModel(scanViewModel: ScanViewModel): ViewModel
 
 
     @Binds

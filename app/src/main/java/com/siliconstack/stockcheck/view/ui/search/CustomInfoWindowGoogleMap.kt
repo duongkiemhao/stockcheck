@@ -7,6 +7,7 @@ import android.widget.TextView
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
 import com.siliconstack.stockcheck.R
+import com.siliconstack.stockcheck.config.Config
 import com.siliconstack.stockcheck.config.Constant
 import com.siliconstack.stockcheck.model.MainDTO
 import com.siliconstack.stockcheck.view.utility.DateUtility
@@ -27,7 +28,7 @@ class CustomInfoWindowGoogleMap:GoogleMap.InfoWindowAdapter{
         view.findViewById<TextView>(R.id.txt_floor).text=mainDTO.floorName
         view.findViewById<TextView>(R.id.txt_bay).text=mainDTO.bayNumber
         view.findViewById<TextView>(R.id.txt_operator).text=mainDTO.operatorName
-        view.findViewById<TextView>(R.id.txt_timestamp).text= DateUtility.parseDateToDateTimeStr(Constant.COMBINE_DATE_TIME_FORMAT, Date(mainDTO.timestamp?:0))
+        view.findViewById<TextView>(R.id.txt_timestamp).text= DateUtility.parseDateToDateTimeStr(Config.COMBINE_DATE_TIME_FORMAT, Date(mainDTO.timestamp?:0))
         view.findViewById<TextView>(R.id.txt_compare).text=mainDTO.compareTimeFullStr
         return view
     }

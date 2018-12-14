@@ -101,6 +101,27 @@
                 </com.balysv.materialripple.MaterialRippleLayout>
 
             </LinearLayout>
+
+            <LinearLayout android:visibility="visible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:orientation="horizontal">
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    app:mrl_rippleOverlay="true"
+                    android:layout_width="100dp"
+                    android:background="@drawable/textbox_white_solid_trans"
+                    android:layout_height="100dp" app:mrl_rippleDuration="@integer/ripple_duration">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" android:id="@+id/btn_scan_driver"
+                        android:gravity="center"
+                        android:text="Driver Licence"
+                        android:textColor="@color/white"
+                        android:textSize="22sp" />
+                </com.balysv.materialripple.MaterialRippleLayout>
+            </LinearLayout>
             <ImageView
                 android:layout_width="wrap_content" android:id="@+id/imageView"
                 android:layout_height="wrap_content" />

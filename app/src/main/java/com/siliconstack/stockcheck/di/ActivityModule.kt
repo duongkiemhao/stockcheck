@@ -2,7 +2,7 @@ package com.siliconstack.stockcheck.di
 
 import com.siliconstack.stockcheck.view.ui.*
 import com.siliconstack.stockcheck.view.ui.base.BaseActivity
-import com.siliconstack.stockcheck.view.ui.scan.ScanResultActivity
+import com.siliconstack.stockcheck.view.ui.scan.ScanActivity
 import com.siliconstack.stockcheck.view.ui.search.SearchActivity
 import com.siliconstack.stockcheck.view.ui.setting.SettingActivity
 import dagger.Module
@@ -22,6 +22,6 @@ abstract class ActivityModule {
     abstract fun injectSearchActivity(): SearchActivity
     @ContributesAndroidInjector(modules = [EmptyFragmentBuildersModule::class])
     abstract fun injectSettingActivity(): SettingActivity
-    @ContributesAndroidInjector(modules = [EmptyFragmentBuildersModule::class])
-    abstract fun injectScanResultActivity(): ScanResultActivity
+    @ContributesAndroidInjector(modules = [ScanFragmentBuildersModule::class])
+    abstract fun injectScanResultActivity(): ScanActivity
 }

@@ -1,21 +1,32 @@
 package com.siliconstack.stockcheck.viewmodel
 
 import android.arch.lifecycle.AndroidViewModel
+import android.arch.lifecycle.LiveData
 import android.arch.persistence.db.SimpleSQLiteQuery
 import com.orhanobut.logger.Logger
 import com.siliconstack.stockcheck.dao.MainDAO
 import com.siliconstack.stockcheck.AppApplication
 import com.siliconstack.stockcheck.config.Config
-import com.siliconstack.stockcheck.model.MainModel
 import com.siliconstack.stockcheck.room.AppDatabase
 import javax.inject.Inject
 import com.siliconstack.stockcheck.dao.FloorDAO
 import com.siliconstack.stockcheck.dao.LocationDAO
 import com.siliconstack.stockcheck.dao.NameDAO
-import com.siliconstack.stockcheck.model.MainDTO
+import com.siliconstack.stockcheck.model.*
+import com.siliconstack.stockcheck.repository.HomeRepository
+import com.siliconstack.stockcheck.view.utility.Utility
+import es.dmoral.toasty.Toasty
+import io.reactivex.Observable
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
 
 
 class MainViewModel @Inject constructor (application: AppApplication): AndroidViewModel(application) {
+
+    @Inject
+    lateinit var  homeRepository: HomeRepository
 
     var mainDAO: MainDAO = AppDatabase.getDatabase(getApplication()).mainDAO()
     var locationDAO: LocationDAO = AppDatabase.getDatabase(getApplication()).locationDAO()
@@ -24,6 +35,8 @@ class MainViewModel @Inject constructor (application: AppApplication): AndroidVi
 
     var items = ArrayList<MainDTO>()
     var keyword=""
+
+
 
     init {
 
@@ -53,5 +66,30 @@ class MainViewModel @Inject constructor (application: AppApplication): AndroidVi
         return null
     }
 
+    fun postFloor(floorModel: FloorModel):LiveData<Resource<BaseApiResponse>>{
+        return homeRepository.postFloor(floorModel)
+    }
 
+    fun postLocation(locationModel: LocationModel):LiveData<Resource<BaseApiResponse>>{
+        return homeRepository.postLocation(locationModel)
+    }
+    fun postOperator(operatorModel: OperatorModel):LiveData<Resource<BaseApiResponse>>{
+        return homeRepository.postOperator(operatorModel)
+    }
+    fun postStockCheck(mainModel: MainModel):LiveData<Resource<BaseApiResponse>>{
+        return homeRepository.postStockChecks(mainModel)
+    }
+
+    fun getLocations():Observable<List<Any>>{
+        return homeRepository.getLocations()
+    }
+    fun getFloors():Observable<List<Any>>{
+        return homeRepository.getFloors()
+    }
+    fun getOperators():Observable<List<Any>>{
+        return homeRepository.getOperators()
+    }
+    fun getStockChecks():Observable<List<Any>>{
+        return homeRepository.getStockChecks()
+    }
 }

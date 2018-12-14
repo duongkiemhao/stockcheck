@@ -2,9 +2,10 @@ package com.siliconstack.stockcheck.di
 
 import com.google.gson.Gson
 import com.siliconstack.stockcheck.AppApplication
+import com.siliconstack.stockcheck.BuildConfig
 
-import com.siliconstack.stockcheck.api.AppApi
-import com.siliconstack.stockcheck.config.Config
+import com.siliconstack.stockcheck.api.OCRApi
+import com.siliconstack.stockcheck.api.TeleserviceApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
@@ -44,14 +45,22 @@ class NetModule() {
 
 
     @Provides
-    fun provideLoginApi(gson: Gson, okHttpClient: OkHttpClient): AppApi {
+    fun provideAppApi(gson: Gson, okHttpClient: OkHttpClient): OCRApi {
         return Retrofit.Builder()
-                .baseUrl(Config.BASE_URL)
+                .baseUrl(BuildConfig.SERVER_OCR_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpClient)
-                .build().create(AppApi::class.java)
+                .build().create(OCRApi::class.java)
     }
-
+    @Provides
+    fun provideTeleserviceApi(gson: Gson, okHttpClient: OkHttpClient): TeleserviceApi {
+        return Retrofit.Builder()
+                .baseUrl(BuildConfig.SERVER_TELESERVICE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(okHttpClient)
+                .build().create(TeleserviceApi::class.java)
+    }
 
 }

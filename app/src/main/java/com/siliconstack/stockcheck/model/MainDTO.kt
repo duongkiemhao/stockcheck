@@ -2,6 +2,7 @@ package com.siliconstack.stockcheck.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import kotlin.Comparator
 
 
@@ -19,18 +20,28 @@ open class MainDTO() : Comparator<MainDTO>, Parcelable {
     }
 
 
+    @SerializedName("Id")
     var id:Int? = null
+    @SerializedName("ScanText")
         var scanText:String?=null
+    @SerializedName("Timestamp")
         var timestamp:Long?=null
         var type:Int?=null
 
 
+    @SerializedName("LocationId")
         var locationID:Int?=null
+    @SerializedName("Location")
         var locationName:String?=null
+    @SerializedName("FloorId")
         var floorID:Int?=null
+    @SerializedName("Floor")
         var floorName:String?=null
+    @SerializedName("OperatorId")
         var operatorID:Int?=null
+    @SerializedName("Operator")
         var operatorName:String?=null
+    @SerializedName("BayNumber")
         var bayNumber:String?=null
         var dateString:String?=null
 

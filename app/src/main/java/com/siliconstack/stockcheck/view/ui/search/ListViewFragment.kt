@@ -120,6 +120,8 @@ class ListViewFragment : Fragment(), Injectable ,ListViewFragmentListener{
                 mainViewModel.items= mainViewModel.filterListSearch(isDesc,offset,if(isDateSorting) "a.timestamp" else "b.name") as ArrayList<MainDTO>
                 bindAdapter()
 
+                this@ListViewFragment.adapter.expandGroup()
+
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -153,7 +155,7 @@ class ListViewFragment : Fragment(), Injectable ,ListViewFragmentListener{
             listviewFragmentBinding.recyclerView.postDelayed({
                 listviewFragmentBinding.recyclerView.scrollToPosition(0)
             },300)
-
+            adapter.expandGroup()
 
         }
         listviewFragmentBinding.txtLocation.setOnClickListener {
@@ -169,6 +171,7 @@ class ListViewFragment : Fragment(), Injectable ,ListViewFragmentListener{
             listviewFragmentBinding.recyclerView.postDelayed({
                 listviewFragmentBinding.recyclerView.scrollToPosition(0)
             },300)
+            adapter.expandGroup()
 
 
         }
@@ -231,7 +234,7 @@ class ListViewFragment : Fragment(), Injectable ,ListViewFragmentListener{
         mainViewModel.items.forEachIndexed { index, model ->
             if(index==0) {
                 if(isDateSorting)
-                    title= DateUtility.parseDateToDateTimeStr(Constant.UI_DATE_FORMAT, Date(model.timestamp?:0))?:""
+                    title= DateUtility.parseDateToDateTimeStr(Config.UI_DATE_FORMAT, Date(model.timestamp?:0))?:""
                 else title=model.locationName?:""
                 listMainDTO.add(model)
 
@@ -244,8 +247,7 @@ class ListViewFragment : Fragment(), Injectable ,ListViewFragmentListener{
                         listMainDTO.add(model)
                     } else {
                         items.add(SearchDTO(title, listMainDTO))
-                        title = DateUtility.parseDateToDateTimeStr(Constant.UI_DATE_FORMAT, Date(model.timestamp
-                                ?: 0)) ?: ""
+                        title = DateUtility.parseDateToDateTimeStr(Config.UI_DATE_FORMAT, Date(model.timestamp?:0)) ?: ""
                         listMainDTO = arrayListOf()
                         listMainDTO.add(model)
                     }
@@ -418,6 +420,10 @@ class ListViewFragment : Fragment(), Injectable ,ListViewFragmentListener{
             layoutManager = LinearLayoutManager(context!!, RecyclerView.VERTICAL, false)
             this@ListViewFragment.adapter = SearchAdapter(this@ListViewFragment, getListExpandGroup())
             adapter = this@ListViewFragment.adapter
+
+
+
+
         }
 
     }

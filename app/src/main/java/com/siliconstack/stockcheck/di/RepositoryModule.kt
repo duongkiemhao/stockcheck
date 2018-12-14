@@ -1,9 +1,10 @@
 package com.siliconstack.stockcheck.di
 
+import com.siliconstack.stockcheck.api.OCRApi
+import com.siliconstack.stockcheck.api.TeleserviceApi
 import com.siliconstack.stockcheck.repository.HomeRepository
 import dagger.Module
 import dagger.Provides
-import okhttp3.OkHttpClient
 import javax.inject.Singleton
 
 /**
@@ -14,8 +15,8 @@ class RepositoryModule{
 
     @Provides
     @Singleton
-    fun provideAppRepository(okHttpClient: OkHttpClient): HomeRepository {
-        return HomeRepository(okHttpClient)
+    fun provideAppRepository(OCRApi: OCRApi,teleserviceApi: TeleserviceApi): HomeRepository {
+        return HomeRepository(OCRApi,teleserviceApi)
     }
 
 

@@ -4,8 +4,8 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
 import android.content.DialogInterface
+import com.siliconstack.stockcheck.config.Config
 import com.siliconstack.stockcheck.config.Constant
-import com.siliconstack.stockcheck.config.Constant.Companion.COMBINE_DATE_TIME_FORMAT
 import com.siliconstack.stockcheck.view.control.DateTimePickupListener
 import org.joda.time.DateTime
 import org.joda.time.DateTimeComparator
@@ -43,7 +43,7 @@ class DateUtility{
         fun createDateFromDatePart(dateStr: String) : Date?{
             try {
 
-                return SimpleDateFormat(Constant.UI_DATE_FORMAT).parse(dateStr)
+                return SimpleDateFormat(Config.UI_DATE_FORMAT).parse(dateStr)
             }
             catch (exp:Exception){
                 return null
@@ -53,7 +53,7 @@ class DateUtility{
         fun createDateFromTimePart(timeStr: String) : Date?{
             try {
 
-                return SimpleDateFormat(Constant.UI_TIME_FORMAT).parse(timeStr)
+                return SimpleDateFormat(Config.UI_TIME_FORMAT).parse(timeStr)
             }
             catch (exp:Exception){
                 return null
@@ -69,7 +69,7 @@ class DateUtility{
                 calendar.set(Calendar.YEAR, year)
                 calendar.set(Calendar.MONTH, month)
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                datetimePickupListener.onDateTimeSelect(DateUtility.parseDateToDateTimeStr(Constant.UI_DATE_FORMAT,calendar.time)?:"")
+                datetimePickupListener.onDateTimeSelect(DateUtility.parseDateToDateTimeStr(Config.UI_DATE_FORMAT,calendar.time)?:"")
 
 
             }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)) {
@@ -101,7 +101,7 @@ class DateUtility{
             var dialog = object : TimePickerDialog(context, TimePickerDialog.OnTimeSetListener { view, hour, minute ->
                 calendar.set(Calendar.HOUR_OF_DAY, hour)
                 calendar.set(Calendar.MINUTE, minute)
-                datetimePickupListener.onDateTimeSelect(DateUtility.parseDateToDateTimeStr(Constant.UI_TIME_FORMAT, calendar.time)?:"")
+                datetimePickupListener.onDateTimeSelect(DateUtility.parseDateToDateTimeStr(Config.UI_TIME_FORMAT, calendar.time)?:"")
             }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false) {
 
                 override fun onClick(dialog: DialogInterface, which: Int) {
@@ -133,7 +133,7 @@ class DateUtility{
 
         fun combineDateAndTimeStrToDate(dateStr:String?, timeStr:String?):Date?{
             try {
-                return SimpleDateFormat(COMBINE_DATE_TIME_FORMAT).parse(dateStr + " " + timeStr)
+                return SimpleDateFormat(Config.COMBINE_DATE_TIME_FORMAT).parse(dateStr + " " + timeStr)
             }
             catch (exp:Exception){
                 return null

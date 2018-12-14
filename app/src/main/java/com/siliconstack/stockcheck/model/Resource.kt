@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 
 class Resource<T> private constructor(val status: Resource.Status, val data: T?, val exception: AppException?) {
     enum class Status {
-        SUCCESS, ERROR,INFO,UNAUTHORIZED
+        SUCCESS, ERROR,UNAUTHORIZED
     }
 
     companion object {
@@ -17,12 +17,6 @@ class Resource<T> private constructor(val status: Resource.Status, val data: T?,
 
         fun <T> error(exception: AppException?): Resource<T> {
             return Resource(Status.ERROR, null, exception)
-        }
-        fun <T> info(data: T?): Resource<T>? {
-            return Resource(Status.INFO, data, null)
-        }
-        fun <T> unauthorized(data: T?): Resource<T>? {
-            return Resource(Status.UNAUTHORIZED, data, null)
         }
 
     }
