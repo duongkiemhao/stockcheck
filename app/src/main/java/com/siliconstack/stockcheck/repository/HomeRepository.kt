@@ -20,6 +20,17 @@ class HomeRepository (val OCRApi: OCRApi,val teleserviceApi: TeleserviceApi) : B
         OCRApi.getDriverLicence(ocrRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<OCRModel>(data) {})
         return data as MutableLiveData<Resource<BaseApiResponse>>
     }
+    fun getVin(ocrRequest: OCRRequest): LiveData<Resource<BaseApiResponse>> {
+        var data = MutableLiveData<Resource<OCRModel>>()
+        OCRApi.getVin(ocrRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<OCRModel>(data) {})
+        return data as MutableLiveData<Resource<BaseApiResponse>>
+    }
+
+    fun getRego(ocrRequest: OCRRequest): LiveData<Resource<BaseApiResponse>> {
+        var data = MutableLiveData<Resource<OCRModel>>()
+        OCRApi.getRego(ocrRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<OCRModel>(data) {})
+        return data as MutableLiveData<Resource<BaseApiResponse>>
+    }
 
 
     fun getLocations(): Observable<List<Any>> {

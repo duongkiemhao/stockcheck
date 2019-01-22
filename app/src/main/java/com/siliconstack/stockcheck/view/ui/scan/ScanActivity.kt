@@ -35,6 +35,7 @@ import com.siliconstack.stockcheck.view.ui.base.BaseActivity
 import com.siliconstack.stockcheck.view.utility.DateUtility
 import com.siliconstack.stockcheck.view.utility.Utility
 import com.siliconstack.stockcheck.viewmodel.MainViewModel
+import com.siliconstack.stockcheck.viewmodel.ScanViewModel
 import com.tbruyelle.rxpermissions2.RxPermissions
 import com.theartofdev.edmodo.cropper.CropImage
 import dagger.android.AndroidInjection
@@ -61,6 +62,7 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityLis
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
     lateinit var scanActivityBinding: ScanActivityBinding
+    lateinit var scanViewModel:ScanViewModel
 
     //lateinit var progressDialog: MaterialDialog
     val REQUEST_QRCODE=101
@@ -78,7 +80,9 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityLis
     var nameModel:FilterDialogModel?=null
     var scanResultFragment:ScanResultFragment?=null
     var ocrModel: OCRModel?=null
-
+    enum class SCANTYPE {
+        DRIVERLICENCE, VIN,REGO
+    }
 
     //scan
     enum class SCAN_ENUM{
@@ -106,7 +110,10 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityLis
     private fun initViewBinding() {
         scanActivityBinding = DataBindingUtil.setContentView(this, R.layout.scan_activity)
         mainViewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
+        scanViewModel = ViewModelProviders.of(this, viewModelFactory).get(ScanViewModel::class.java)
         AppApplication.appComponent.injectViewModel(mainViewModel)
+        AppApplication.appComponent.injectViewModel(scanViewModel)
+
     }
 
 
@@ -164,7 +171,7 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityLis
                     Activity.RESULT_OK->{
                         val uri=data?.data
                         CropImage.activity(uri)
-                                .start(this);
+                                .start(this)
                     }
                 }
             }
@@ -176,10 +183,13 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityLis
                         scanActivityBinding.imageView.setImageBitmap(resizedBitmap)
                         when(scanEnum){
                             SCAN_ENUM.DRIVER.ordinal ->{
-                                scanFromSSServer(resizedBitmap)
+                                scanDriverLicenceAPI(resizedBitmap)
                             }
-                            else -> {
-                                loadCloudScan(resizedBitmap)
+                            SCAN_ENUM.VIN.ordinal ->{
+                                scanVinAPI(resizedBitmap)
+                            }
+                            SCAN_ENUM.REGO.ordinal ->{
+                                scanRegoAPI(resizedBitmap)
                             }
                         }
 
@@ -328,7 +338,7 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityLis
                 3
             SCAN_ENUM.QRCODE.ordinal ->
                 4
-            else -> 5
+            else -> 5//Driver Licence
 
         }
     }
@@ -381,87 +391,6 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityLis
         }
     }
 
-    fun loadInfo() {
-        val PATTERN_VIN ="(?s).*([0-9ABCDEFGHJKLNPRSTUVWXYZ]{17}).*";
-        when(scanEnum){
-            SCAN_ENUM.VIN.ordinal ->{
-                val matcher = Pattern.compile(PATTERN_VIN).matcher(result)
-                if (matcher.matches()) {
-                    scanActivityBinding.ediScanResult.setText(matcher.group(1).replace("[^0-9A-Z]".toRegex(), ""))
-                }
-            }
-            SCAN_ENUM.REGO.ordinal ->{
-                scanActivityBinding.ediScanResult.setText(result?.replace("[^0-9A-Z]".toRegex(), ""))
-            }
-        }
-    }
-
-    fun loadCloudScan(bitmap: Bitmap){
-
-        scanActivityBinding.animationView.visibility=View.VISIBLE
-        val visionBuilder = Vision.Builder(
-                NetHttpTransport(),
-                AndroidJsonFactory(),
-                null)
-
-        visionBuilder.setVisionRequestInitializer(
-                VisionRequestInitializer(Config.CLOUD_VISION_API_KEY))
-        val vision = visionBuilder.build()
-        val desiredFeature = Feature()
-        desiredFeature.type = Config.CLOUD_VISION_DETECT_TYPE
-        val request = AnnotateImageRequest()
-        val inputImage = Image()
-        inputImage.content = Utility.convertBitmapToBase64(bitmap)
-        request.image = inputImage;
-        request.features = Arrays.asList(desiredFeature);
-
-        val batchRequest = BatchAnnotateImagesRequest()
-        batchRequest.setRequests(Arrays.asList(request))
-        //bitmap.recycle()
-
-        doAsync {
-            var batchResponse: BatchAnnotateImagesResponse
-            try{
-                batchResponse = vision.images().annotate(batchRequest).execute()
-                uiThread {
-                    val imagesResponse=batchResponse.getResponses().get(0)
-
-                    scanActivityBinding.animationView.visibility=View.GONE
-                    if(scanEnum== SCAN_ENUM.VIN.ordinal) {
-                        val content = imagesResponse.getFullTextAnnotation();
-                        if (content != null)
-                        {
-                            result=content.text
-                            loadInfo()
-                        }
-                        else content?.let { it1 -> Toasty.error(this@ScanActivity, "Scan error, no text found").show() }
-                    }
-                    else if(scanEnum== SCAN_ENUM.REGO.ordinal){
-                        val list = imagesResponse.textAnnotations;
-                        var result :StringBuffer= StringBuffer()
-                        if(list!=null) {
-                            list.forEachIndexed { index, entityAnnotation ->
-                                if(index>=1){
-                                    if(entityAnnotation.boundingPoly.vertices.count()>=4)
-                                        if(Math.abs(entityAnnotation.boundingPoly.vertices[1].y-entityAnnotation.boundingPoly.vertices[3].y)>=100)
-                                            result.append(entityAnnotation.description)
-                                }
-                            }
-                            this@ScanActivity.result=result.toString()
-                            loadInfo()
-                        }
-                        else list?.let { it1 -> Toasty.error(this@ScanActivity,"Scan error, no text found").show() }
-                    }
-                }
-            }
-            catch (exp:Exception) {
-
-                scanActivityBinding.animationView.visibility=View.GONE
-            }
-
-        }
-
-    }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMessageEvent(mainEventBus: MainEventBus) {
@@ -470,12 +399,16 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityLis
             scanActivityBinding.imageView.setImageBitmap(bitmap)
             when(scanEnum){
                 SCAN_ENUM.DRIVER.ordinal ->{
-                    scanFromSSServer(bitmap)
+                    scanDriverLicenceAPI(bitmap)
                 }
-                else -> {
-                    loadCloudScan(bitmap)
+                SCAN_ENUM.VIN.ordinal ->{
+                    scanVinAPI(bitmap)
+                }
+                SCAN_ENUM.REGO.ordinal ->{
+                    scanRegoAPI(bitmap)
                 }
             }
+
         }
         mainEventBus.frameDimension?.let {
             scanActivityBinding.layoutImage.layoutParams.height=it[1]
@@ -485,17 +418,15 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityLis
     }
 
 
-    fun scanFromSSServer(bitmap: Bitmap){
+    fun scanDriverLicenceAPI(bitmap: Bitmap){
         var ocrRequest=OCRRequest()
         ocrRequest.imageData=Utility.convertBitmapToBase64(bitmap)
         progressDialog.show()
-        mainViewModel.homeRepository.getDriverLicence(ocrRequest).observe(this, android.arch.lifecycle.Observer { resource: Resource<BaseApiResponse>? ->
-
-
+        scanViewModel.getDriverLicence(ocrRequest).observe(this, android.arch.lifecycle.Observer { resource: Resource<BaseApiResponse>? ->
+            progressDialog.dismiss()
             if (resource != null) {
                 when (resource.status) {
                     Resource.Status.SUCCESS -> {
-                        progressDialog.dismiss()
                         ocrModel= resource.data as OCRModel
                         if(ocrModel!=null){
                             showResultDialog()
@@ -506,23 +437,71 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityLis
 
                     }
                     Resource.Status.ERROR -> {
+                        Toasty.error(this@ScanActivity,resource.exception?.exceptin?.message?:"").show()
+
+                    }
+                }
+            }
+        })
+    }
+
+    fun scanVinAPI(bitmap: Bitmap){
+        var ocrRequest=OCRRequest()
+        ocrRequest.imageData=Utility.convertBitmapToBase64(bitmap)
+        progressDialog.show()
+        scanViewModel.getVin(ocrRequest).observe(this, android.arch.lifecycle.Observer { resource: Resource<BaseApiResponse>? ->
+            progressDialog.dismiss()
+            if (resource != null) {
+                when (resource.status) {
+                    Resource.Status.SUCCESS -> {
+                        ocrModel= resource.data as OCRModel
+                        if(ocrModel!=null){
+                            scanActivityBinding.ediScanResult.setText(ocrModel!!.vin)
+                        }
+                        else{
+                            Toasty.info(this@ScanActivity,"Sorry, No text found, please try again").show()
+                        }
+                    }
+                    Resource.Status.ERROR -> {
                         progressDialog.dismiss()
                         Toasty.error(this@ScanActivity,resource.exception?.exceptin?.message?:"").show()
 
                     }
-
-
                 }
             }
+        })
+    }
 
+    fun scanRegoAPI(bitmap: Bitmap){
+        var ocrRequest=OCRRequest()
+        ocrRequest.imageData=Utility.convertBitmapToBase64(bitmap)
+        progressDialog.show()
+        scanViewModel.getRego(ocrRequest).observe(this, android.arch.lifecycle.Observer { resource: Resource<BaseApiResponse>? ->
+            progressDialog.dismiss()
+            if (resource != null) {
+                when (resource.status) {
+                    Resource.Status.SUCCESS -> {
+                        ocrModel= resource.data as OCRModel
+                        if(ocrModel!=null){
+                            scanActivityBinding.ediScanResult.setText(ocrModel!!.rego)
+                        }
+                        else{
+                            Toasty.info(this@ScanActivity,"Sorry, No text found, please try again").show()
+                        }
 
+                    }
+                    Resource.Status.ERROR -> {
+                        Toasty.error(this@ScanActivity,resource.exception?.exceptin?.message?:"").show()
+
+                    }
+                }
+            }
         })
     }
 
     fun showResultDialog(){
         if(ocrModel==null)
             return
-
         scanResultFragment=ScanResultFragment.newInstance(ocrModel!!,
                     (scanActivityBinding.toolbar.height+scanActivityBinding.layoutImage.height).toInt())
         scanResultFragment?.show(supportFragmentManager, ScanResultFragment::class.simpleName)

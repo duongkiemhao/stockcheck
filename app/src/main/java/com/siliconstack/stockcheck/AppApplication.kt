@@ -6,7 +6,6 @@ import android.os.Handler
 import android.support.multidex.MultiDex
 import android.support.multidex.MultiDexApplication
 import com.chibatching.kotpref.Kotpref
-import com.google.firebase.FirebaseApp
 import com.google.gson.Gson
 import com.marcinmoskala.kotlinpreferences.PreferenceHolder
 import com.marcinmoskala.kotlinpreferences.gson.GsonSerializer
@@ -75,8 +74,8 @@ class AppApplication : MultiDexApplication(), HasActivityInjector  {
         Kotpref.init(this)
         Logger.addLogAdapter(AndroidLogAdapter())
         initUserSetting()
-        JodaTimeAndroid.init(this);
-        FirebaseApp.initializeApp(this)
+        JodaTimeAndroid.init(this)
+
         val builder = StrictMode.VmPolicy.Builder()
         StrictMode.setVmPolicy(builder.build())
 

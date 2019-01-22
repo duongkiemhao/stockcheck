@@ -13,4 +13,8 @@ interface OCRApi {
 
     @POST("DriverLicences")
     fun getDriverLicence(@Body ocrRequest: OCRRequest): Call<OCRModel>
+    @POST("Vins")
+    fun getVin(@Body ocrRequest: OCRRequest): Call<OCRModel>
+    @POST("Regos")
+    fun getRego(@Body ocrRequest: OCRRequest): Call<OCRModel>
 }

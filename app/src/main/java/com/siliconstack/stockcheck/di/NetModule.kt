@@ -53,6 +53,7 @@ class NetModule() {
                 .client(okHttpClient)
                 .build().create(OCRApi::class.java)
     }
+
     @Provides
     fun provideTeleserviceApi(gson: Gson, okHttpClient: OkHttpClient): TeleserviceApi {
         return Retrofit.Builder()

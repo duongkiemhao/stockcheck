@@ -22,16 +22,17 @@ class ScanViewModel @Inject constructor (application: AppApplication): AndroidVi
     lateinit var  homeRepository: HomeRepository
     lateinit var ocrModel:OCRModel
 
-
-
     init {
-
-
     }
 
     fun getDriverLicence(ocrRequest: OCRRequest) : LiveData<Resource<BaseApiResponse>> {
         return homeRepository.getDriverLicence(ocrRequest)
     }
-
+    fun getVin(ocrRequest: OCRRequest) : LiveData<Resource<BaseApiResponse>> {
+        return homeRepository.getVin(ocrRequest)
+    }
+    fun getRego(ocrRequest: OCRRequest) : LiveData<Resource<BaseApiResponse>> {
+        return homeRepository.getRego(ocrRequest)
+    }
 
 }
