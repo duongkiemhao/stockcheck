@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent" android:paddingTop="5dp" android:paddingBottom="5dp"
+        android:orientation="vertical">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txt_make"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.5" />
+
+            <TextView
+                android:id="@+id/txt_model"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true" android:layout_marginStart="10dp"
+                android:textColor="@color/white"
+                app:layout_constraintLeft_toRightOf="@id/txt_make"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.5" />
+            <TextView
+                android:id="@+id/txt_variant"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_make"
+                app:layout_constraintWidth_percent="0.5" />
+
+            <TextView
+                android:id="@+id/txt_year"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true" android:layout_marginStart="10dp"
+                android:textColor="@color/white"
+                app:layout_constraintLeft_toRightOf="@id/txt_variant"
+                app:layout_constraintTop_toTopOf="@+id/txt_variant"
+                app:layout_constraintWidth_percent="0.5" />
+            <TextView
+                android:id="@+id/txt_series"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_variant"
+                app:layout_constraintWidth_percent="0.5" />
+
+            <TextView
+                android:id="@+id/txt_tranmission"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true" android:layout_marginStart="10dp"
+                android:textColor="@color/white"
+                app:layout_constraintLeft_toRightOf="@id/txt_series"
+                app:layout_constraintTop_toTopOf="@+id/txt_series"
+                app:layout_constraintWidth_percent="0.5" />
+            <TextView
+                android:id="@+id/txt_body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_series"
+                app:layout_constraintWidth_percent="0.5" />
+
+            <TextView
+                android:id="@+id/txt_vin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true" android:layout_marginStart="10dp"
+                android:textColor="@color/white"
+                app:layout_constraintLeft_toRightOf="@id/txt_body"
+                app:layout_constraintTop_toTopOf="@+id/txt_body"
+                app:layout_constraintWidth_percent="0.5" />
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+
+</layout>

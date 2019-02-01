@@ -1,5 +1,6 @@
 package com.siliconstack.stockcheck.di
 
+import com.siliconstack.stockcheck.api.GoogleVisionApi
 import com.siliconstack.stockcheck.api.OCRApi
 import com.siliconstack.stockcheck.api.TeleserviceApi
 import com.siliconstack.stockcheck.repository.HomeRepository
@@ -15,8 +16,8 @@ class RepositoryModule{
 
     @Provides
     @Singleton
-    fun provideAppRepository(OCRApi: OCRApi,teleserviceApi: TeleserviceApi): HomeRepository {
-        return HomeRepository(OCRApi,teleserviceApi)
+    fun provideAppRepository(OCRApi: OCRApi,teleserviceApi: TeleserviceApi,googleVisionApi: GoogleVisionApi): HomeRepository {
+        return HomeRepository(OCRApi,teleserviceApi,googleVisionApi)
     }
 
 

@@ -1,0 +1,618 @@
+-- Merging decision tree log ---
+meta-data#net.hockeyapp.android.appIdentifier
+INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:60:9-109
+	android:value
+		INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:60:71-106
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:60:20-70
+manifest
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:2:1-72:12
+INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:2:1-72:12
+INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:2:1-72:12
+INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:2:1-72:12
+MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/android-image-cropper-2.7.0.aar/7ff0b79192b618e714d279eb79d72de0/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.databinding:adapters:3.3.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/adapters-3.3.0.aar/c0f02059e20e7f0b4ecae4d86ff9841e/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.databinding:library:3.3.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/library-3.3.0.aar/edd41ffe81eac098b59c918de56f3f83/AndroidManifest.xml:17:1-24:12
+MERGED from [com.marcinmoskala.PreferenceHolder:preferenceholder-gson-serializer:1.51] /Users/si01/.gradle/caches/transforms-1/files-1.1/preferenceholder-gson-serializer-1.51.aar/93d138546ad6b6ae8a7166c7b1aab7a4/AndroidManifest.xml:2:1-12:12
+MERGED from [com.marcinmoskala.PreferenceHolder:preferenceholder:1.51] /Users/si01/.gradle/caches/transforms-1/files-1.1/preferenceholder-1.51.aar/38fc22961dcc98242c6de505c52d8c4a/AndroidManifest.xml:2:1-12:12
+MERGED from [com.thoughtbot:expandablerecyclerview:1.3] /Users/si01/.gradle/caches/transforms-1/files-1.1/expandablerecyclerview-1.3.aar/a5ccb229bbab416ca65c92bfedf93b49/AndroidManifest.xml:2:1-12:12
+MERGED from [com.github.ganfra:material-spinner:2.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/material-spinner-2.0.0.aar/8005d12368065c6585c848099330783e/AndroidManifest.xml:2:1-10:12
+MERGED from [com.android.support:design:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/b7d43b8fdc590be4f0acb430ebe6cfb9/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.paging:runtime:1.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/54fcafd875766da82a17c43d9147b5d5/AndroidManifest.xml:17:1-22:12
+MERGED from [com.afollestad.material-dialogs:core:0.9.6.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/1f0d9e8c98bbc478f67e4cb293866867/AndroidManifest.xml:2:1-15:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/b845679fc4c30a3813b4ebc4262db6c8/AndroidManifest.xml:17:1-22:12
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/rxandroid-2.0.2.aar/a3327c8277442d235bb0fbe911ba363f/AndroidManifest.xml:15:1-21:12
+MERGED from [com.balysv:material-ripple:1.0.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/material-ripple-1.0.2.aar/30b36e7b51b28d6f99f21d2683646bf6/AndroidManifest.xml:2:1-14:12
+MERGED from [com.airbnb.android:lottie:2.5.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/lottie-2.5.1.aar/bf7234324acc46824085526536c92e3a/AndroidManifest.xml:2:1-14:12
+MERGED from [com.chibatching.kotpref:kotpref:2.5.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/kotpref-2.5.0.aar/db1ae170b016fbdfd91c4a380473e950/AndroidManifest.xml:2:1-13:12
+MERGED from [com.crashlytics.sdk.android:crashlytics:2.9.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/crashlytics-2.9.4.aar/1b889775071211611eed4526d283e975/AndroidManifest.xml:2:1-19:12
+MERGED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:2:1-28:12
+MERGED from [com.daimajia.swipelayout:library:1.2.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/library-1.2.0.aar/fdb749926cad0769c5d3464b1e67395b/AndroidManifest.xml:2:1-10:12
+MERGED from [me.dm7.barcodescanner:zxing:1.9] /Users/si01/.gradle/caches/transforms-1/files-1.1/zxing-1.9.aar/e7d88363b884776913b11c81eb215627/AndroidManifest.xml:2:1-13:12
+MERGED from [com.google.android.gms:play-services-maps:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-maps-16.0.0.aar/372b67a2720fcad2f09ad4242a26f421/AndroidManifest.xml:17:1-32:12
+MERGED from [com.daimajia.numberprogressbar:library:1.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/library-1.4.aar/0063ccac0e1f90adeba56396e7a7f5b2/AndroidManifest.xml:2:1-11:12
+MERGED from [com.amitshekhar.android:debug-db:1.0.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/debug-db-1.0.4.aar/694f890925c8572839f5066aa5cf51cd/AndroidManifest.xml:20:1-40:12
+MERGED from [com.google.dagger:dagger-android-support:2.11] /Users/si01/.gradle/caches/transforms-1/files-1.1/dagger-android-support-2.11.aar/e7bf0b9f7c2a1109ec02736bc5cc1df9/AndroidManifest.xml:16:1-19:12
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.4.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/library-1.4.2.aar/8612f00f06a4cef6fbd927d6d737dfb4/AndroidManifest.xml:6:1-16:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/a2763407e76555465aa3ed9fc9c3c646/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/6626f7522f4d7753f9d5b8c0d9207616/AndroidManifest.xml:2:1-11:12
+MERGED from [android.arch.lifecycle:extensions:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/249a0d2333974608b402507a4c02046a/AndroidManifest.xml:17:1-30:12
+MERGED from [com.github.bumptech.glide:glide:4.7.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/glide-4.7.1.aar/cf3b9fee13fd0a844875eceba77aa014/AndroidManifest.xml:2:1-13:12
+MERGED from [com.github.tbruyelle:rxpermissions:0.10.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/rxpermissions-0.10.2.aar/82e2a9972fe2b8cbdca9e3892a250f32/AndroidManifest.xml:2:1-11:12
+MERGED from [me.dm7.barcodescanner:core:1.9] /Users/si01/.gradle/caches/transforms-1/files-1.1/core-1.9.aar/925aa649982ea1b5f9a1e53d4bb59380/AndroidManifest.xml:2:1-13:12
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-location-16.0.0.aar/d74c45f392583063d0d7d38034cb9e81/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/8d1c3fc4876aaa17bb7cf277efd586de/AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-places-placereport-16.0.0.aar/87726b89c30525d7813f60a24ddd086a/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-tasks-16.0.1.aar/49ae42215348825cc99b8b70228774a6/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/c4e6d7d4eeb2595a801af89ce3cbf329/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/701354bb6a63161dd89a68f234c7c1d9/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/75c73c34c5966a24d967b8b3efe4bf78/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/03cd9da63f47da0e7fc337b500b89298/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/d9a968a3d1d1da84fd217a45505dd75e/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.persistence.room:runtime:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/a10c3c2832588c17fb6eb866a0389779/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/8eb0456ceb6b22a98315fe26182e063c/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/8f4083ddf8510fc69d56574d49fee9b4/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/transition-27.1.1.aar/7df53d79c89138e65640a96d8d617597/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/f6addae55f3303ad2b4b41a32997417a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/a87bbb1a9c3b8f5136bde85dac03274d/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/464e98ffb4826c49718ca671ca8a42e2/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:multidex:1.0.3] /Users/si01/.gradle/caches/transforms-1/files-1.1/multidex-1.0.3.aar/ce7a2b703c09567b463bfb8f3fe50c50/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.GrenderG:Toasty:1.3.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/Toasty-1.3.0.aar/a6a692b863b9995b7b736cf5fe11acb4/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.dagger:dagger-android:2.11] /Users/si01/.gradle/caches/transforms-1/files-1.1/dagger-android-2.11.aar/f29545532fd5073a15733cb0a9534701/AndroidManifest.xml:16:1-19:12
+MERGED from [com.orhanobut:logger:2.2.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/logger-2.2.0.aar/0e4e7228659a03c652832826d560f8b5/AndroidManifest.xml:2:1-8:12
+MERGED from [net.danlew:android.joda:2.9.9.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/android.joda-2.9.9.4.aar/39bd8cbb2466e03b3044d44e136eb657/AndroidManifest.xml:2:1-7:12
+MERGED from [com.camerakit:camerakit:1.0.0-beta3.10] /Users/si01/.gradle/caches/transforms-1/files-1.1/camerakit-1.0.0-beta3.10.aar/77c5554a5c08918ddd250658821b4b39/AndroidManifest.xml:2:1-24:12
+MERGED from [com.camerakit:jpegkit:0.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/jpegkit-0.1.0.aar/e9384bdfca40bc09395bd236ad35ae3a/AndroidManifest.xml:2:1-10:12
+MERGED from [com.android.support:exifinterface:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/exifinterface-27.1.1.aar/d37fbe4340cf0d4d9750b85e21b3735b/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/b24cdd3c803c21afe01943edee19b9ce/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/d93a0f081e326fd3a8030687fbbce293/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/6c8a0f99605931b40cea46097e2719d4/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/bd926f87bae5128348ad6593fa65dfae/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.persistence:db-framework:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/db-framework-1.1.1.aar/42612f1e830ed5b9ad09865730b8e14b/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.persistence:db:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/db-1.1.1.aar/5db4d96467668ddd5849c915335816cd/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.7.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/gifdecoder-4.7.1.aar/6b160eba9cfa92ad5e59c562f6c34fc5/AndroidManifest.xml:2:1-11:12
+MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.6.3] /Users/si01/.gradle/caches/transforms-1/files-1.1/crashlytics-core-2.6.3.aar/294f2c538b2adc7dfecab9748e71671a/AndroidManifest.xml:45:1-56:12
+MERGED from [com.crashlytics.sdk.android:beta:1.2.9] /Users/si01/.gradle/caches/transforms-1/files-1.1/beta-1.2.9.aar/dbeea53c3560ecb346c0bd24e2b4c6eb/AndroidManifest.xml:2:1-13:12
+MERGED from [com.crashlytics.sdk.android:answers:1.4.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/answers-1.4.2.aar/bf65d6c8dbb812682f6c298b84e0584e/AndroidManifest.xml:2:1-13:12
+MERGED from [io.fabric.sdk.android:fabric:1.4.3] /Users/si01/.gradle/caches/transforms-1/files-1.1/fabric-1.4.3.aar/326e041ef93921dd000be91e9662f2ec/AndroidManifest.xml:22:1-33:12
+MERGED from [net.zetetic:android-database-sqlcipher:3.5.7] /Users/si01/.gradle/caches/transforms-1/files-1.1/android-database-sqlcipher-3.5.7.aar/94082ec102c8ed04cc6bcff3dad9e0ae/AndroidManifest.xml:2:1-4:12
+INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:2:1-72:12
+INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:2:1-72:12
+INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:2:1-72:12
+	package
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:4:5-42
+		INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:2:1-72:12
+		INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:3:5-51
+	android:hardwareAccelerated
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:5:5-39
+	android:versionCode
+		INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:2:1-72:12
+		INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:7:5-81
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:7:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:8:5-79
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:8:22-76
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:9:5-79
+MERGED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:11:5-79
+MERGED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:11:5-79
+MERGED from [com.google.android.gms:play-services-maps:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-maps-16.0.0.aar/372b67a2720fcad2f09ad4242a26f421/AndroidManifest.xml:23:5-79
+MERGED from [com.google.android.gms:play-services-maps:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-maps-16.0.0.aar/372b67a2720fcad2f09ad4242a26f421/AndroidManifest.xml:23:5-79
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:9:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:10:5-76
+MERGED from [com.amitshekhar.android:debug-db:1.0.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/debug-db-1.0.4.aar/694f890925c8572839f5066aa5cf51cd/AndroidManifest.xml:30:5-76
+MERGED from [com.amitshekhar.android:debug-db:1.0.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/debug-db-1.0.4.aar/694f890925c8572839f5066aa5cf51cd/AndroidManifest.xml:30:5-76
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:10:22-73
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:11:5-75
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:11:22-72
+uses-permission#android.permission.INTERNET
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:12:5-67
+MERGED from [com.crashlytics.sdk.android:crashlytics:2.9.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/crashlytics-2.9.4.aar/1b889775071211611eed4526d283e975/AndroidManifest.xml:9:5-67
+MERGED from [com.crashlytics.sdk.android:crashlytics:2.9.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/crashlytics-2.9.4.aar/1b889775071211611eed4526d283e975/AndroidManifest.xml:9:5-67
+MERGED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:12:5-67
+MERGED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:12:5-67
+MERGED from [com.google.android.gms:play-services-maps:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-maps-16.0.0.aar/372b67a2720fcad2f09ad4242a26f421/AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-maps:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-maps-16.0.0.aar/372b67a2720fcad2f09ad4242a26f421/AndroidManifest.xml:24:5-67
+MERGED from [com.amitshekhar.android:debug-db:1.0.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/debug-db-1.0.4.aar/694f890925c8572839f5066aa5cf51cd/AndroidManifest.xml:29:5-67
+MERGED from [com.amitshekhar.android:debug-db:1.0.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/debug-db-1.0.4.aar/694f890925c8572839f5066aa5cf51cd/AndroidManifest.xml:29:5-67
+MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.6.3] /Users/si01/.gradle/caches/transforms-1/files-1.1/crashlytics-core-2.6.3.aar/294f2c538b2adc7dfecab9748e71671a/AndroidManifest.xml:52:5-67
+MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.6.3] /Users/si01/.gradle/caches/transforms-1/files-1.1/crashlytics-core-2.6.3.aar/294f2c538b2adc7dfecab9748e71671a/AndroidManifest.xml:52:5-67
+MERGED from [com.crashlytics.sdk.android:beta:1.2.9] /Users/si01/.gradle/caches/transforms-1/files-1.1/beta-1.2.9.aar/dbeea53c3560ecb346c0bd24e2b4c6eb/AndroidManifest.xml:9:5-67
+MERGED from [com.crashlytics.sdk.android:beta:1.2.9] /Users/si01/.gradle/caches/transforms-1/files-1.1/beta-1.2.9.aar/dbeea53c3560ecb346c0bd24e2b4c6eb/AndroidManifest.xml:9:5-67
+MERGED from [com.crashlytics.sdk.android:answers:1.4.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/answers-1.4.2.aar/bf65d6c8dbb812682f6c298b84e0584e/AndroidManifest.xml:9:5-67
+MERGED from [com.crashlytics.sdk.android:answers:1.4.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/answers-1.4.2.aar/bf65d6c8dbb812682f6c298b84e0584e/AndroidManifest.xml:9:5-67
+MERGED from [io.fabric.sdk.android:fabric:1.4.3] /Users/si01/.gradle/caches/transforms-1/files-1.1/fabric-1.4.3.aar/326e041ef93921dd000be91e9662f2ec/AndroidManifest.xml:29:5-67
+MERGED from [io.fabric.sdk.android:fabric:1.4.3] /Users/si01/.gradle/caches/transforms-1/files-1.1/fabric-1.4.3.aar/326e041ef93921dd000be91e9662f2ec/AndroidManifest.xml:29:5-67
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:12:22-64
+uses-permission#android.permission.CAMERA
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:13:5-65
+MERGED from [com.camerakit:camerakit:1.0.0-beta3.10] /Users/si01/.gradle/caches/transforms-1/files-1.1/camerakit-1.0.0-beta3.10.aar/77c5554a5c08918ddd250658821b4b39/AndroidManifest.xml:7:5-65
+MERGED from [com.camerakit:camerakit:1.0.0-beta3.10] /Users/si01/.gradle/caches/transforms-1/files-1.1/camerakit-1.0.0-beta3.10.aar/77c5554a5c08918ddd250658821b4b39/AndroidManifest.xml:7:5-65
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:13:22-62
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:14:5-101
+	tools:node
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:14:78-98
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:14:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:15:5-102
+REJECTED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:13:5-15:38
+REJECTED from [com.camerakit:camerakit:1.0.0-beta3.10] /Users/si01/.gradle/caches/transforms-1/files-1.1/camerakit-1.0.0-beta3.10.aar/77c5554a5c08918ddd250658821b4b39/AndroidManifest.xml:9:5-81
+	tools:node
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:15:79-99
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:15:22-78
+uses-permission#android.permission.USE_FINGERPRINT
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:18:5-19:61
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:19:9-58
+supports-screens
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:21:5-24:39
+	android:largeScreens
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:23:9-36
+	android:smallScreens
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:21:23-51
+	android:normalScreens
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:22:9-38
+	android:xlargeScreens
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:24:9-37
+application
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:26:5-70:19
+MERGED from [com.afollestad.material-dialogs:core:0.9.6.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/1f0d9e8c98bbc478f67e4cb293866867/AndroidManifest.xml:13:5-20
+MERGED from [com.afollestad.material-dialogs:core:0.9.6.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/1f0d9e8c98bbc478f67e4cb293866867/AndroidManifest.xml:13:5-20
+MERGED from [com.balysv:material-ripple:1.0.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/material-ripple-1.0.2.aar/30b36e7b51b28d6f99f21d2683646bf6/AndroidManifest.xml:12:5-20
+MERGED from [com.balysv:material-ripple:1.0.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/material-ripple-1.0.2.aar/30b36e7b51b28d6f99f21d2683646bf6/AndroidManifest.xml:12:5-20
+MERGED from [com.airbnb.android:lottie:2.5.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/lottie-2.5.1.aar/bf7234324acc46824085526536c92e3a/AndroidManifest.xml:12:5-20
+MERGED from [com.airbnb.android:lottie:2.5.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/lottie-2.5.1.aar/bf7234324acc46824085526536c92e3a/AndroidManifest.xml:12:5-20
+MERGED from [com.chibatching.kotpref:kotpref:2.5.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/kotpref-2.5.0.aar/db1ae170b016fbdfd91c4a380473e950/AndroidManifest.xml:11:5-20
+MERGED from [com.chibatching.kotpref:kotpref:2.5.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/kotpref-2.5.0.aar/db1ae170b016fbdfd91c4a380473e950/AndroidManifest.xml:11:5-20
+MERGED from [com.crashlytics.sdk.android:crashlytics:2.9.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/crashlytics-2.9.4.aar/1b889775071211611eed4526d283e975/AndroidManifest.xml:11:5-17:19
+MERGED from [com.crashlytics.sdk.android:crashlytics:2.9.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/crashlytics-2.9.4.aar/1b889775071211611eed4526d283e975/AndroidManifest.xml:11:5-17:19
+MERGED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:18:5-26:19
+MERGED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:18:5-26:19
+MERGED from [me.dm7.barcodescanner:zxing:1.9] /Users/si01/.gradle/caches/transforms-1/files-1.1/zxing-1.9.aar/e7d88363b884776913b11c81eb215627/AndroidManifest.xml:11:5-20
+MERGED from [me.dm7.barcodescanner:zxing:1.9] /Users/si01/.gradle/caches/transforms-1/files-1.1/zxing-1.9.aar/e7d88363b884776913b11c81eb215627/AndroidManifest.xml:11:5-20
+MERGED from [com.google.android.gms:play-services-maps:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-maps-16.0.0.aar/372b67a2720fcad2f09ad4242a26f421/AndroidManifest.xml:30:5-20
+MERGED from [com.google.android.gms:play-services-maps:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-maps-16.0.0.aar/372b67a2720fcad2f09ad4242a26f421/AndroidManifest.xml:30:5-20
+MERGED from [com.amitshekhar.android:debug-db:1.0.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/debug-db-1.0.4.aar/694f890925c8572839f5066aa5cf51cd/AndroidManifest.xml:32:5-38:19
+MERGED from [com.amitshekhar.android:debug-db:1.0.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/debug-db-1.0.4.aar/694f890925c8572839f5066aa5cf51cd/AndroidManifest.xml:32:5-38:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/6626f7522f4d7753f9d5b8c0d9207616/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/6626f7522f4d7753f9d5b8c0d9207616/AndroidManifest.xml:9:5-20
+MERGED from [android.arch.lifecycle:extensions:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/249a0d2333974608b402507a4c02046a/AndroidManifest.xml:22:5-28:19
+MERGED from [android.arch.lifecycle:extensions:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/249a0d2333974608b402507a4c02046a/AndroidManifest.xml:22:5-28:19
+MERGED from [com.github.bumptech.glide:glide:4.7.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/glide-4.7.1.aar/cf3b9fee13fd0a844875eceba77aa014/AndroidManifest.xml:11:5-20
+MERGED from [com.github.bumptech.glide:glide:4.7.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/glide-4.7.1.aar/cf3b9fee13fd0a844875eceba77aa014/AndroidManifest.xml:11:5-20
+MERGED from [com.github.tbruyelle:rxpermissions:0.10.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/rxpermissions-0.10.2.aar/82e2a9972fe2b8cbdca9e3892a250f32/AndroidManifest.xml:9:5-20
+MERGED from [com.github.tbruyelle:rxpermissions:0.10.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/rxpermissions-0.10.2.aar/82e2a9972fe2b8cbdca9e3892a250f32/AndroidManifest.xml:9:5-20
+MERGED from [me.dm7.barcodescanner:core:1.9] /Users/si01/.gradle/caches/transforms-1/files-1.1/core-1.9.aar/925aa649982ea1b5f9a1e53d4bb59380/AndroidManifest.xml:11:5-20
+MERGED from [me.dm7.barcodescanner:core:1.9] /Users/si01/.gradle/caches/transforms-1/files-1.1/core-1.9.aar/925aa649982ea1b5f9a1e53d4bb59380/AndroidManifest.xml:11:5-20
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-location-16.0.0.aar/d74c45f392583063d0d7d38034cb9e81/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-location-16.0.0.aar/d74c45f392583063d0d7d38034cb9e81/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/8d1c3fc4876aaa17bb7cf277efd586de/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/8d1c3fc4876aaa17bb7cf277efd586de/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-places-placereport-16.0.0.aar/87726b89c30525d7813f60a24ddd086a/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-places-placereport-16.0.0.aar/87726b89c30525d7813f60a24ddd086a/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-tasks-16.0.1.aar/49ae42215348825cc99b8b70228774a6/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-tasks-16.0.1.aar/49ae42215348825cc99b8b70228774a6/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/c4e6d7d4eeb2595a801af89ce3cbf329/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/c4e6d7d4eeb2595a801af89ce3cbf329/AndroidManifest.xml:22:5-26:19
+MERGED from [com.github.bumptech.glide:gifdecoder:4.7.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/gifdecoder-4.7.1.aar/6b160eba9cfa92ad5e59c562f6c34fc5/AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.7.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/gifdecoder-4.7.1.aar/6b160eba9cfa92ad5e59c562f6c34fc5/AndroidManifest.xml:9:5-20
+MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.6.3] /Users/si01/.gradle/caches/transforms-1/files-1.1/crashlytics-core-2.6.3.aar/294f2c538b2adc7dfecab9748e71671a/AndroidManifest.xml:54:5-20
+MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.6.3] /Users/si01/.gradle/caches/transforms-1/files-1.1/crashlytics-core-2.6.3.aar/294f2c538b2adc7dfecab9748e71671a/AndroidManifest.xml:54:5-20
+MERGED from [com.crashlytics.sdk.android:beta:1.2.9] /Users/si01/.gradle/caches/transforms-1/files-1.1/beta-1.2.9.aar/dbeea53c3560ecb346c0bd24e2b4c6eb/AndroidManifest.xml:11:5-20
+MERGED from [com.crashlytics.sdk.android:beta:1.2.9] /Users/si01/.gradle/caches/transforms-1/files-1.1/beta-1.2.9.aar/dbeea53c3560ecb346c0bd24e2b4c6eb/AndroidManifest.xml:11:5-20
+MERGED from [com.crashlytics.sdk.android:answers:1.4.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/answers-1.4.2.aar/bf65d6c8dbb812682f6c298b84e0584e/AndroidManifest.xml:11:5-20
+MERGED from [com.crashlytics.sdk.android:answers:1.4.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/answers-1.4.2.aar/bf65d6c8dbb812682f6c298b84e0584e/AndroidManifest.xml:11:5-20
+MERGED from [io.fabric.sdk.android:fabric:1.4.3] /Users/si01/.gradle/caches/transforms-1/files-1.1/fabric-1.4.3.aar/326e041ef93921dd000be91e9662f2ec/AndroidManifest.xml:31:5-20
+MERGED from [io.fabric.sdk.android:fabric:1.4.3] /Users/si01/.gradle/caches/transforms-1/files-1.1/fabric-1.4.3.aar/326e041ef93921dd000be91e9662f2ec/AndroidManifest.xml:31:5-20
+	android:label
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:29:9-41
+	tools:ignore
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:31:9-48
+	android:icon
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:28:9-36
+	android:allowBackup
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:27:9-35
+	android:theme
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:30:10-53
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:27:36-93
+activity#com.siliconstack.stockcheck.view.ui.MainActivity
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:32:9-43:20
+	android:screenOrientation
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:33:13-49
+	android:launchMode
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:33:50-80
+	android:theme
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:33:81-109
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:32:19-82
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:34:13-38:29
+action#android.intent.action.MAIN
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:35:17-69
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:35:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:36:17-77
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:36:27-74
+intent-filter#data:mimeType:text/plain
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:39:13-42:29
+data
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:40:17-55
+	android:mimeType
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:40:23-52
+provider#android.support.v4.content.FileProvider
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:46:9-54:20
+	android:grantUriPermissions
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:50:13-47
+	android:authorities
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:48:13-75
+	android:exported
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:49:13-37
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:47:13-67
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:51:13-53:54
+	android:resource
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:53:17-51
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:52:17-67
+meta-data#io.fabric.ApiKey
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:55:9-57:72
+	android:value
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:57:13-69
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:56:13-44
+meta-data#com.google.android.geo.API_KEY
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:58:9-123
+	android:value
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:58:66-121
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:58:20-65
+activity#com.siliconstack.stockcheck.view.ui.scan.CameraActivity
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:61:9-188
+	android:screenOrientation
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:61:150-186
+	android:launchMode
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:61:90-120
+	android:theme
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:61:121-149
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:61:19-89
+activity#com.siliconstack.stockcheck.view.ui.search.SearchActivity
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:62:9-162
+	android:screenOrientation
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:62:124-160
+	android:launchMode
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:62:92-122
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:62:19-91
+activity#com.siliconstack.stockcheck.view.ui.scan.ZXingScannerActivity
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:63:9-166
+	android:screenOrientation
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:63:128-164
+	android:launchMode
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:63:96-126
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:63:19-95
+activity#com.siliconstack.stockcheck.view.ui.setting.SettingActivity
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:64:9-164
+	android:screenOrientation
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:64:126-162
+	android:launchMode
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:64:94-124
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:64:19-93
+activity#com.siliconstack.stockcheck.view.ui.scan.ScanActivity
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:65:9-197
+	android:screenOrientation
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:65:119-155
+	android:launchMode
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:65:88-118
+	android:windowSoftInputMode
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:65:156-195
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:65:19-87
+activity#com.siliconstack.stockcheck.view.ui.search.VehicleActivity
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:66:9-163
+	android:screenOrientation
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:66:124-160
+	android:launchMode
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:66:93-123
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:66:19-92
+activity#com.siliconstack.stockcheck.view.ui.scan.ScanCarActivity
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:67:9-134
+	android:screenOrientation
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:67:95-131
+	android:launchMode
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:67:64-94
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:67:19-63
+activity#com.theartofdev.edmodo.cropper.CropImageActivity
+ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:68:9-69:127
+	android:screenOrientation
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:69:88-124
+	android:launchMode
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:69:57-87
+	android:theme
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:69:13-56
+	android:name
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml:68:19-82
+uses-sdk
+INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml
+INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml
+MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/android-image-cropper-2.7.0.aar/7ff0b79192b618e714d279eb79d72de0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/android-image-cropper-2.7.0.aar/7ff0b79192b618e714d279eb79d72de0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.databinding:adapters:3.3.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/adapters-3.3.0.aar/c0f02059e20e7f0b4ecae4d86ff9841e/AndroidManifest.xml:22:5-44
+MERGED from [com.android.databinding:adapters:3.3.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/adapters-3.3.0.aar/c0f02059e20e7f0b4ecae4d86ff9841e/AndroidManifest.xml:22:5-44
+MERGED from [com.android.databinding:library:3.3.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/library-3.3.0.aar/edd41ffe81eac098b59c918de56f3f83/AndroidManifest.xml:22:5-44
+MERGED from [com.android.databinding:library:3.3.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/library-3.3.0.aar/edd41ffe81eac098b59c918de56f3f83/AndroidManifest.xml:22:5-44
+MERGED from [com.marcinmoskala.PreferenceHolder:preferenceholder-gson-serializer:1.51] /Users/si01/.gradle/caches/transforms-1/files-1.1/preferenceholder-gson-serializer-1.51.aar/93d138546ad6b6ae8a7166c7b1aab7a4/AndroidManifest.xml:8:5-10:41
+MERGED from [com.marcinmoskala.PreferenceHolder:preferenceholder-gson-serializer:1.51] /Users/si01/.gradle/caches/transforms-1/files-1.1/preferenceholder-gson-serializer-1.51.aar/93d138546ad6b6ae8a7166c7b1aab7a4/AndroidManifest.xml:8:5-10:41
+MERGED from [com.marcinmoskala.PreferenceHolder:preferenceholder:1.51] /Users/si01/.gradle/caches/transforms-1/files-1.1/preferenceholder-1.51.aar/38fc22961dcc98242c6de505c52d8c4a/AndroidManifest.xml:8:5-10:41
+MERGED from [com.marcinmoskala.PreferenceHolder:preferenceholder:1.51] /Users/si01/.gradle/caches/transforms-1/files-1.1/preferenceholder-1.51.aar/38fc22961dcc98242c6de505c52d8c4a/AndroidManifest.xml:8:5-10:41
+MERGED from [com.thoughtbot:expandablerecyclerview:1.3] /Users/si01/.gradle/caches/transforms-1/files-1.1/expandablerecyclerview-1.3.aar/a5ccb229bbab416ca65c92bfedf93b49/AndroidManifest.xml:8:5-10:41
+MERGED from [com.thoughtbot:expandablerecyclerview:1.3] /Users/si01/.gradle/caches/transforms-1/files-1.1/expandablerecyclerview-1.3.aar/a5ccb229bbab416ca65c92bfedf93b49/AndroidManifest.xml:8:5-10:41
+MERGED from [com.github.ganfra:material-spinner:2.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/material-spinner-2.0.0.aar/8005d12368065c6585c848099330783e/AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.ganfra:material-spinner:2.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/material-spinner-2.0.0.aar/8005d12368065c6585c848099330783e/AndroidManifest.xml:6:5-8:41
+MERGED from [com.android.support:design:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/b7d43b8fdc590be4f0acb430ebe6cfb9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/b7d43b8fdc590be4f0acb430ebe6cfb9/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.paging:runtime:1.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/54fcafd875766da82a17c43d9147b5d5/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.paging:runtime:1.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/54fcafd875766da82a17c43d9147b5d5/AndroidManifest.xml:20:5-44
+MERGED from [com.afollestad.material-dialogs:core:0.9.6.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/1f0d9e8c98bbc478f67e4cb293866867/AndroidManifest.xml:8:5-11:75
+MERGED from [com.afollestad.material-dialogs:core:0.9.6.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/1f0d9e8c98bbc478f67e4cb293866867/AndroidManifest.xml:8:5-11:75
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/b845679fc4c30a3813b4ebc4262db6c8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.1.1.aar/b845679fc4c30a3813b4ebc4262db6c8/AndroidManifest.xml:20:5-44
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/rxandroid-2.0.2.aar/a3327c8277442d235bb0fbe911ba363f/AndroidManifest.xml:19:5-43
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/rxandroid-2.0.2.aar/a3327c8277442d235bb0fbe911ba363f/AndroidManifest.xml:19:5-43
+MERGED from [com.balysv:material-ripple:1.0.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/material-ripple-1.0.2.aar/30b36e7b51b28d6f99f21d2683646bf6/AndroidManifest.xml:8:5-10:41
+MERGED from [com.balysv:material-ripple:1.0.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/material-ripple-1.0.2.aar/30b36e7b51b28d6f99f21d2683646bf6/AndroidManifest.xml:8:5-10:41
+MERGED from [com.airbnb.android:lottie:2.5.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/lottie-2.5.1.aar/bf7234324acc46824085526536c92e3a/AndroidManifest.xml:8:5-10:41
+MERGED from [com.airbnb.android:lottie:2.5.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/lottie-2.5.1.aar/bf7234324acc46824085526536c92e3a/AndroidManifest.xml:8:5-10:41
+MERGED from [com.chibatching.kotpref:kotpref:2.5.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/kotpref-2.5.0.aar/db1ae170b016fbdfd91c4a380473e950/AndroidManifest.xml:7:5-9:41
+MERGED from [com.chibatching.kotpref:kotpref:2.5.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/kotpref-2.5.0.aar/db1ae170b016fbdfd91c4a380473e950/AndroidManifest.xml:7:5-9:41
+MERGED from [com.crashlytics.sdk.android:crashlytics:2.9.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/crashlytics-2.9.4.aar/1b889775071211611eed4526d283e975/AndroidManifest.xml:7:5-43
+MERGED from [com.crashlytics.sdk.android:crashlytics:2.9.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/crashlytics-2.9.4.aar/1b889775071211611eed4526d283e975/AndroidManifest.xml:7:5-43
+MERGED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:7:5-9:41
+MERGED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:7:5-9:41
+MERGED from [com.daimajia.swipelayout:library:1.2.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/library-1.2.0.aar/fdb749926cad0769c5d3464b1e67395b/AndroidManifest.xml:6:5-8:41
+MERGED from [com.daimajia.swipelayout:library:1.2.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/library-1.2.0.aar/fdb749926cad0769c5d3464b1e67395b/AndroidManifest.xml:6:5-8:41
+MERGED from [me.dm7.barcodescanner:zxing:1.9] /Users/si01/.gradle/caches/transforms-1/files-1.1/zxing-1.9.aar/e7d88363b884776913b11c81eb215627/AndroidManifest.xml:7:5-9:41
+MERGED from [me.dm7.barcodescanner:zxing:1.9] /Users/si01/.gradle/caches/transforms-1/files-1.1/zxing-1.9.aar/e7d88363b884776913b11c81eb215627/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.android.gms:play-services-maps:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-maps-16.0.0.aar/372b67a2720fcad2f09ad4242a26f421/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-maps-16.0.0.aar/372b67a2720fcad2f09ad4242a26f421/AndroidManifest.xml:20:5-44
+MERGED from [com.daimajia.numberprogressbar:library:1.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/library-1.4.aar/0063ccac0e1f90adeba56396e7a7f5b2/AndroidManifest.xml:7:5-9:41
+MERGED from [com.daimajia.numberprogressbar:library:1.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/library-1.4.aar/0063ccac0e1f90adeba56396e7a7f5b2/AndroidManifest.xml:7:5-9:41
+MERGED from [com.amitshekhar.android:debug-db:1.0.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/debug-db-1.0.4.aar/694f890925c8572839f5066aa5cf51cd/AndroidManifest.xml:25:5-27:41
+MERGED from [com.amitshekhar.android:debug-db:1.0.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/debug-db-1.0.4.aar/694f890925c8572839f5066aa5cf51cd/AndroidManifest.xml:25:5-27:41
+MERGED from [com.google.dagger:dagger-android-support:2.11] /Users/si01/.gradle/caches/transforms-1/files-1.1/dagger-android-support-2.11.aar/e7bf0b9f7c2a1109ec02736bc5cc1df9/AndroidManifest.xml:18:3-42
+MERGED from [com.google.dagger:dagger-android-support:2.11] /Users/si01/.gradle/caches/transforms-1/files-1.1/dagger-android-support-2.11.aar/e7bf0b9f7c2a1109ec02736bc5cc1df9/AndroidManifest.xml:18:3-42
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.4.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/library-1.4.2.aar/8612f00f06a4cef6fbd927d6d737dfb4/AndroidManifest.xml:12:5-14:41
+MERGED from [me.zhanghai.android.materialprogressbar:library:1.4.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/library-1.4.2.aar/8612f00f06a4cef6fbd927d6d737dfb4/AndroidManifest.xml:12:5-14:41
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/a2763407e76555465aa3ed9fc9c3c646/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/a2763407e76555465aa3ed9fc9c3c646/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/6626f7522f4d7753f9d5b8c0d9207616/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.2.aar/6626f7522f4d7753f9d5b8c0d9207616/AndroidManifest.xml:5:5-7:41
+MERGED from [android.arch.lifecycle:extensions:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/249a0d2333974608b402507a4c02046a/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:extensions:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/249a0d2333974608b402507a4c02046a/AndroidManifest.xml:20:5-44
+MERGED from [com.github.bumptech.glide:glide:4.7.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/glide-4.7.1.aar/cf3b9fee13fd0a844875eceba77aa014/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.bumptech.glide:glide:4.7.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/glide-4.7.1.aar/cf3b9fee13fd0a844875eceba77aa014/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.tbruyelle:rxpermissions:0.10.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/rxpermissions-0.10.2.aar/82e2a9972fe2b8cbdca9e3892a250f32/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.tbruyelle:rxpermissions:0.10.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/rxpermissions-0.10.2.aar/82e2a9972fe2b8cbdca9e3892a250f32/AndroidManifest.xml:5:5-7:41
+MERGED from [me.dm7.barcodescanner:core:1.9] /Users/si01/.gradle/caches/transforms-1/files-1.1/core-1.9.aar/925aa649982ea1b5f9a1e53d4bb59380/AndroidManifest.xml:7:5-9:41
+MERGED from [me.dm7.barcodescanner:core:1.9] /Users/si01/.gradle/caches/transforms-1/files-1.1/core-1.9.aar/925aa649982ea1b5f9a1e53d4bb59380/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-location-16.0.0.aar/d74c45f392583063d0d7d38034cb9e81/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-location-16.0.0.aar/d74c45f392583063d0d7d38034cb9e81/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/8d1c3fc4876aaa17bb7cf277efd586de/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/8d1c3fc4876aaa17bb7cf277efd586de/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-places-placereport-16.0.0.aar/87726b89c30525d7813f60a24ddd086a/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-places-placereport-16.0.0.aar/87726b89c30525d7813f60a24ddd086a/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-tasks-16.0.1.aar/49ae42215348825cc99b8b70228774a6/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-tasks-16.0.1.aar/49ae42215348825cc99b8b70228774a6/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/c4e6d7d4eeb2595a801af89ce3cbf329/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/c4e6d7d4eeb2595a801af89ce3cbf329/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/701354bb6a63161dd89a68f234c7c1d9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/701354bb6a63161dd89a68f234c7c1d9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/75c73c34c5966a24d967b8b3efe4bf78/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/75c73c34c5966a24d967b8b3efe4bf78/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/03cd9da63f47da0e7fc337b500b89298/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/03cd9da63f47da0e7fc337b500b89298/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/d9a968a3d1d1da84fd217a45505dd75e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/d9a968a3d1d1da84fd217a45505dd75e/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence.room:runtime:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/a10c3c2832588c17fb6eb866a0389779/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence.room:runtime:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/a10c3c2832588c17fb6eb866a0389779/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/8eb0456ceb6b22a98315fe26182e063c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/8eb0456ceb6b22a98315fe26182e063c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/8f4083ddf8510fc69d56574d49fee9b4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/8f4083ddf8510fc69d56574d49fee9b4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/transition-27.1.1.aar/7df53d79c89138e65640a96d8d617597/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/transition-27.1.1.aar/7df53d79c89138e65640a96d8d617597/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/f6addae55f3303ad2b4b41a32997417a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/f6addae55f3303ad2b4b41a32997417a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/a87bbb1a9c3b8f5136bde85dac03274d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/a87bbb1a9c3b8f5136bde85dac03274d/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/464e98ffb4826c49718ca671ca8a42e2/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/464e98ffb4826c49718ca671ca8a42e2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:multidex:1.0.3] /Users/si01/.gradle/caches/transforms-1/files-1.1/multidex-1.0.3.aar/ce7a2b703c09567b463bfb8f3fe50c50/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:multidex:1.0.3] /Users/si01/.gradle/caches/transforms-1/files-1.1/multidex-1.0.3.aar/ce7a2b703c09567b463bfb8f3fe50c50/AndroidManifest.xml:20:5-43
+MERGED from [com.github.GrenderG:Toasty:1.3.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/Toasty-1.3.0.aar/a6a692b863b9995b7b736cf5fe11acb4/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.GrenderG:Toasty:1.3.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/Toasty-1.3.0.aar/a6a692b863b9995b7b736cf5fe11acb4/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.dagger:dagger-android:2.11] /Users/si01/.gradle/caches/transforms-1/files-1.1/dagger-android-2.11.aar/f29545532fd5073a15733cb0a9534701/AndroidManifest.xml:18:3-42
+MERGED from [com.google.dagger:dagger-android:2.11] /Users/si01/.gradle/caches/transforms-1/files-1.1/dagger-android-2.11.aar/f29545532fd5073a15733cb0a9534701/AndroidManifest.xml:18:3-42
+MERGED from [com.orhanobut:logger:2.2.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/logger-2.2.0.aar/0e4e7228659a03c652832826d560f8b5/AndroidManifest.xml:6:5-43
+MERGED from [com.orhanobut:logger:2.2.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/logger-2.2.0.aar/0e4e7228659a03c652832826d560f8b5/AndroidManifest.xml:6:5-43
+MERGED from [net.danlew:android.joda:2.9.9.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/android.joda-2.9.9.4.aar/39bd8cbb2466e03b3044d44e136eb657/AndroidManifest.xml:5:5-43
+MERGED from [net.danlew:android.joda:2.9.9.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/android.joda-2.9.9.4.aar/39bd8cbb2466e03b3044d44e136eb657/AndroidManifest.xml:5:5-43
+MERGED from [com.camerakit:camerakit:1.0.0-beta3.10] /Users/si01/.gradle/caches/transforms-1/files-1.1/camerakit-1.0.0-beta3.10.aar/77c5554a5c08918ddd250658821b4b39/AndroidManifest.xml:5:5-44
+MERGED from [com.camerakit:camerakit:1.0.0-beta3.10] /Users/si01/.gradle/caches/transforms-1/files-1.1/camerakit-1.0.0-beta3.10.aar/77c5554a5c08918ddd250658821b4b39/AndroidManifest.xml:5:5-44
+MERGED from [com.camerakit:jpegkit:0.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/jpegkit-0.1.0.aar/e9384bdfca40bc09395bd236ad35ae3a/AndroidManifest.xml:6:5-8:41
+MERGED from [com.camerakit:jpegkit:0.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/jpegkit-0.1.0.aar/e9384bdfca40bc09395bd236ad35ae3a/AndroidManifest.xml:6:5-8:41
+MERGED from [com.android.support:exifinterface:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/exifinterface-27.1.1.aar/d37fbe4340cf0d4d9750b85e21b3735b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:exifinterface:27.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/exifinterface-27.1.1.aar/d37fbe4340cf0d4d9750b85e21b3735b/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/b24cdd3c803c21afe01943edee19b9ce/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/b24cdd3c803c21afe01943edee19b9ce/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/d93a0f081e326fd3a8030687fbbce293/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/d93a0f081e326fd3a8030687fbbce293/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/6c8a0f99605931b40cea46097e2719d4/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/6c8a0f99605931b40cea46097e2719d4/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/bd926f87bae5128348ad6593fa65dfae/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/bd926f87bae5128348ad6593fa65dfae/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence:db-framework:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/db-framework-1.1.1.aar/42612f1e830ed5b9ad09865730b8e14b/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence:db-framework:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/db-framework-1.1.1.aar/42612f1e830ed5b9ad09865730b8e14b/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence:db:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/db-1.1.1.aar/5db4d96467668ddd5849c915335816cd/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence:db:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/db-1.1.1.aar/5db4d96467668ddd5849c915335816cd/AndroidManifest.xml:20:5-44
+MERGED from [com.github.bumptech.glide:gifdecoder:4.7.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/gifdecoder-4.7.1.aar/6b160eba9cfa92ad5e59c562f6c34fc5/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.7.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/gifdecoder-4.7.1.aar/6b160eba9cfa92ad5e59c562f6c34fc5/AndroidManifest.xml:5:5-7:41
+MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.6.3] /Users/si01/.gradle/caches/transforms-1/files-1.1/crashlytics-core-2.6.3.aar/294f2c538b2adc7dfecab9748e71671a/AndroidManifest.xml:50:5-43
+MERGED from [com.crashlytics.sdk.android:crashlytics-core:2.6.3] /Users/si01/.gradle/caches/transforms-1/files-1.1/crashlytics-core-2.6.3.aar/294f2c538b2adc7dfecab9748e71671a/AndroidManifest.xml:50:5-43
+MERGED from [com.crashlytics.sdk.android:beta:1.2.9] /Users/si01/.gradle/caches/transforms-1/files-1.1/beta-1.2.9.aar/dbeea53c3560ecb346c0bd24e2b4c6eb/AndroidManifest.xml:7:5-43
+MERGED from [com.crashlytics.sdk.android:beta:1.2.9] /Users/si01/.gradle/caches/transforms-1/files-1.1/beta-1.2.9.aar/dbeea53c3560ecb346c0bd24e2b4c6eb/AndroidManifest.xml:7:5-43
+MERGED from [com.crashlytics.sdk.android:answers:1.4.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/answers-1.4.2.aar/bf65d6c8dbb812682f6c298b84e0584e/AndroidManifest.xml:7:5-43
+MERGED from [com.crashlytics.sdk.android:answers:1.4.2] /Users/si01/.gradle/caches/transforms-1/files-1.1/answers-1.4.2.aar/bf65d6c8dbb812682f6c298b84e0584e/AndroidManifest.xml:7:5-43
+MERGED from [io.fabric.sdk.android:fabric:1.4.3] /Users/si01/.gradle/caches/transforms-1/files-1.1/fabric-1.4.3.aar/326e041ef93921dd000be91e9662f2ec/AndroidManifest.xml:27:5-43
+MERGED from [io.fabric.sdk.android:fabric:1.4.3] /Users/si01/.gradle/caches/transforms-1/files-1.1/fabric-1.4.3.aar/326e041ef93921dd000be91e9662f2ec/AndroidManifest.xml:27:5-43
+MERGED from [net.zetetic:android-database-sqlcipher:3.5.7] /Users/si01/.gradle/caches/transforms-1/files-1.1/android-database-sqlcipher-3.5.7.aar/94082ec102c8ed04cc6bcff3dad9e0ae/AndroidManifest.xml:3:3-40
+MERGED from [net.zetetic:android-database-sqlcipher:3.5.7] /Users/si01/.gradle/caches/transforms-1/files-1.1/android-database-sqlcipher-3.5.7.aar/94082ec102c8ed04cc6bcff3dad9e0ae/AndroidManifest.xml:3:3-40
+INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml
+INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.afollestad.material-dialogs:core:0.9.6.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/core-0.9.6.0.aar/1f0d9e8c98bbc478f67e4cb293866867/AndroidManifest.xml:11:9-72
+	android:targetSdkVersion
+		INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml
+		ADDED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/si01/Documents/workspace/Android/StockCheck/app/src/main/AndroidManifest.xml
+provider#com.crashlytics.android.CrashlyticsInitProvider
+ADDED from [com.crashlytics.sdk.android:crashlytics:2.9.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/crashlytics-2.9.4.aar/1b889775071211611eed4526d283e975/AndroidManifest.xml:12:9-16:39
+	android:authorities
+		ADDED from [com.crashlytics.sdk.android:crashlytics:2.9.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/crashlytics-2.9.4.aar/1b889775071211611eed4526d283e975/AndroidManifest.xml:14:13-75
+	android:exported
+		ADDED from [com.crashlytics.sdk.android:crashlytics:2.9.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/crashlytics-2.9.4.aar/1b889775071211611eed4526d283e975/AndroidManifest.xml:15:13-37
+	android:initOrder
+		ADDED from [com.crashlytics.sdk.android:crashlytics:2.9.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/crashlytics-2.9.4.aar/1b889775071211611eed4526d283e975/AndroidManifest.xml:16:13-36
+	android:name
+		ADDED from [com.crashlytics.sdk.android:crashlytics:2.9.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/crashlytics-2.9.4.aar/1b889775071211611eed4526d283e975/AndroidManifest.xml:13:13-75
+uses-permission#android.permission.REQUEST_INSTALL_PACKAGES
+ADDED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:16:5-83
+	android:name
+		ADDED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:16:22-80
+activity#net.hockeyapp.android.UpdateActivity
+ADDED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:19:9-73
+	android:name
+		ADDED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:19:19-70
+activity#net.hockeyapp.android.FeedbackActivity
+ADDED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:20:9-22:71
+	android:windowSoftInputMode
+		ADDED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:22:13-68
+	android:name
+		ADDED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:21:13-66
+activity#net.hockeyapp.android.PaintActivity
+ADDED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:23:9-72
+	android:name
+		ADDED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:23:19-69
+activity#net.hockeyapp.android.LoginActivity
+ADDED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:24:9-72
+	android:name
+		ADDED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:24:19-69
+activity#net.hockeyapp.android.ExpiryInfoActivity
+ADDED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:25:9-77
+	android:name
+		ADDED from [net.hockeyapp.android:HockeySDK:5.1.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/HockeySDK-5.1.0.aar/d849ccae7c6bbf59c23b26daf401773a/AndroidManifest.xml:25:19-74
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-maps-16.0.0.aar/372b67a2720fcad2f09ad4242a26f421/AndroidManifest.xml:26:5-28:35
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-maps-16.0.0.aar/372b67a2720fcad2f09ad4242a26f421/AndroidManifest.xml:27:9-41
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:16.0.0] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-maps-16.0.0.aar/372b67a2720fcad2f09ad4242a26f421/AndroidManifest.xml:28:9-32
+provider#com.amitshekhar.DebugDBInitProvider
+ADDED from [com.amitshekhar.android:debug-db:1.0.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/debug-db-1.0.4.aar/694f890925c8572839f5066aa5cf51cd/AndroidManifest.xml:33:9-37:40
+	android:enabled
+		ADDED from [com.amitshekhar.android:debug-db:1.0.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/debug-db-1.0.4.aar/694f890925c8572839f5066aa5cf51cd/AndroidManifest.xml:36:13-35
+	android:authorities
+		ADDED from [com.amitshekhar.android:debug-db:1.0.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/debug-db-1.0.4.aar/694f890925c8572839f5066aa5cf51cd/AndroidManifest.xml:35:13-71
+	android:exported
+		ADDED from [com.amitshekhar.android:debug-db:1.0.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/debug-db-1.0.4.aar/694f890925c8572839f5066aa5cf51cd/AndroidManifest.xml:37:13-37
+	android:name
+		ADDED from [com.amitshekhar.android:debug-db:1.0.4] /Users/si01/.gradle/caches/transforms-1/files-1.1/debug-db-1.0.4.aar/694f890925c8572839f5066aa5cf51cd/AndroidManifest.xml:34:13-63
+provider#android.arch.lifecycle.ProcessLifecycleOwnerInitializer
+ADDED from [android.arch.lifecycle:extensions:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/249a0d2333974608b402507a4c02046a/AndroidManifest.xml:23:9-27:43
+	android:authorities
+		ADDED from [android.arch.lifecycle:extensions:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/249a0d2333974608b402507a4c02046a/AndroidManifest.xml:25:13-68
+	android:multiprocess
+		ADDED from [android.arch.lifecycle:extensions:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/249a0d2333974608b402507a4c02046a/AndroidManifest.xml:27:13-40
+	android:exported
+		ADDED from [android.arch.lifecycle:extensions:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/249a0d2333974608b402507a4c02046a/AndroidManifest.xml:26:13-37
+	android:name
+		ADDED from [android.arch.lifecycle:extensions:1.1.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/extensions-1.1.1.aar/249a0d2333974608b402507a4c02046a/AndroidManifest.xml:24:13-83
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/8d1c3fc4876aaa17bb7cf277efd586de/AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/8d1c3fc4876aaa17bb7cf277efd586de/AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/8d1c3fc4876aaa17bb7cf277efd586de/AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/8d1c3fc4876aaa17bb7cf277efd586de/AndroidManifest.xml:24:13-79
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/c4e6d7d4eeb2595a801af89ce3cbf329/AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/c4e6d7d4eeb2595a801af89ce3cbf329/AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:16.0.1] /Users/si01/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.0.1.aar/c4e6d7d4eeb2595a801af89ce3cbf329/AndroidManifest.xml:24:13-58
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from [com.camerakit:camerakit:1.0.0-beta3.10] /Users/si01/.gradle/caches/transforms-1/files-1.1/camerakit-1.0.0-beta3.10.aar/77c5554a5c08918ddd250658821b4b39/AndroidManifest.xml:8:5-71
+	android:name
+		ADDED from [com.camerakit:camerakit:1.0.0-beta3.10] /Users/si01/.gradle/caches/transforms-1/files-1.1/camerakit-1.0.0-beta3.10.aar/77c5554a5c08918ddd250658821b4b39/AndroidManifest.xml:8:22-68
+uses-feature#android.hardware.camera
+ADDED from [com.camerakit:camerakit:1.0.0-beta3.10] /Users/si01/.gradle/caches/transforms-1/files-1.1/camerakit-1.0.0-beta3.10.aar/77c5554a5c08918ddd250658821b4b39/AndroidManifest.xml:11:5-13:36
+	android:required
+		ADDED from [com.camerakit:camerakit:1.0.0-beta3.10] /Users/si01/.gradle/caches/transforms-1/files-1.1/camerakit-1.0.0-beta3.10.aar/77c5554a5c08918ddd250658821b4b39/AndroidManifest.xml:13:9-33
+	android:name
+		ADDED from [com.camerakit:camerakit:1.0.0-beta3.10] /Users/si01/.gradle/caches/transforms-1/files-1.1/camerakit-1.0.0-beta3.10.aar/77c5554a5c08918ddd250658821b4b39/AndroidManifest.xml:12:9-47
+uses-feature#android.hardware.camera.front
+ADDED from [com.camerakit:camerakit:1.0.0-beta3.10] /Users/si01/.gradle/caches/transforms-1/files-1.1/camerakit-1.0.0-beta3.10.aar/77c5554a5c08918ddd250658821b4b39/AndroidManifest.xml:14:5-16:36
+	android:required
+		ADDED from [com.camerakit:camerakit:1.0.0-beta3.10] /Users/si01/.gradle/caches/transforms-1/files-1.1/camerakit-1.0.0-beta3.10.aar/77c5554a5c08918ddd250658821b4b39/AndroidManifest.xml:16:9-33
+	android:name
+		ADDED from [com.camerakit:camerakit:1.0.0-beta3.10] /Users/si01/.gradle/caches/transforms-1/files-1.1/camerakit-1.0.0-beta3.10.aar/77c5554a5c08918ddd250658821b4b39/AndroidManifest.xml:15:9-53
+uses-feature#android.hardware.camera.autofocus
+ADDED from [com.camerakit:camerakit:1.0.0-beta3.10] /Users/si01/.gradle/caches/transforms-1/files-1.1/camerakit-1.0.0-beta3.10.aar/77c5554a5c08918ddd250658821b4b39/AndroidManifest.xml:17:5-19:36
+	android:required
+		ADDED from [com.camerakit:camerakit:1.0.0-beta3.10] /Users/si01/.gradle/caches/transforms-1/files-1.1/camerakit-1.0.0-beta3.10.aar/77c5554a5c08918ddd250658821b4b39/AndroidManifest.xml:19:9-33
+	android:name
+		ADDED from [com.camerakit:camerakit:1.0.0-beta3.10] /Users/si01/.gradle/caches/transforms-1/files-1.1/camerakit-1.0.0-beta3.10.aar/77c5554a5c08918ddd250658821b4b39/AndroidManifest.xml:18:9-57
+uses-feature#android.hardware.microphone
+ADDED from [com.camerakit:camerakit:1.0.0-beta3.10] /Users/si01/.gradle/caches/transforms-1/files-1.1/camerakit-1.0.0-beta3.10.aar/77c5554a5c08918ddd250658821b4b39/AndroidManifest.xml:20:5-22:36
+	android:required
+		ADDED from [com.camerakit:camerakit:1.0.0-beta3.10] /Users/si01/.gradle/caches/transforms-1/files-1.1/camerakit-1.0.0-beta3.10.aar/77c5554a5c08918ddd250658821b4b39/AndroidManifest.xml:22:9-33
+	android:name
+		ADDED from [com.camerakit:camerakit:1.0.0-beta3.10] /Users/si01/.gradle/caches/transforms-1/files-1.1/camerakit-1.0.0-beta3.10.aar/77c5554a5c08918ddd250658821b4b39/AndroidManifest.xml:21:9-51

@@ -1,0 +1,62 @@
+[
+    {
+        "merged": "/Users/si01/Documents/workspace/Android/StockCheck/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout-port/vehicle_detail.xml",
+        "source": "/Users/si01/Documents/workspace/Android/StockCheck/app/src/main/res-screen/login/layout-port/vehicle_detail.xml"
+    },
+    {
+        "merged": "/Users/si01/Documents/workspace/Android/StockCheck/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout-port/listview_fragment.xml",
+        "source": "/Users/si01/Documents/workspace/Android/StockCheck/app/src/main/res-screen/login/layout-port/listview_fragment.xml"
+    },
+    {
+        "merged": "/Users/si01/Documents/workspace/Android/StockCheck/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout-port/search_header_item.xml",
+        "source": "/Users/si01/Documents/workspace/Android/StockCheck/app/src/main/res-screen/login/layout-port/search_header_item.xml"
+    },
+    {
+        "merged": "/Users/si01/Documents/workspace/Android/StockCheck/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout-port/setting_item.xml",
+        "source": "/Users/si01/Documents/workspace/Android/StockCheck/app/src/main/res-screen/login/layout-port/setting_item.xml"
+    },
+    {
+        "merged": "/Users/si01/Documents/workspace/Android/StockCheck/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout-port/view_vehicle_found.xml",
+        "source": "/Users/si01/Documents/workspace/Android/StockCheck/app/src/main/res-screen/login/layout-port/view_vehicle_found.xml"
+    },
+    {
+        "merged": "/Users/si01/Documents/workspace/Android/StockCheck/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout-port/mapview_fragment.xml",
+        "source": "/Users/si01/Documents/workspace/Android/StockCheck/app/src/main/res-screen/login/layout-port/mapview_fragment.xml"
+    },
+    {
+        "merged": "/Users/si01/Documents/workspace/Android/StockCheck/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout-port/search_activity.xml",
+        "source": "/Users/si01/Documents/workspace/Android/StockCheck/app/src/main/res-screen/login/layout-port/search_activity.xml"
+    },
+    {
+        "merged": "/Users/si01/Documents/workspace/Android/StockCheck/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout-port/scan_result_fragment.xml",
+        "source": "/Users/si01/Documents/workspace/Android/StockCheck/app/src/main/res-screen/login/layout-port/scan_result_fragment.xml"
+    },
+    {
+        "merged": "/Users/si01/Documents/workspace/Android/StockCheck/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout-port/scan_activity.xml",
+        "source": "/Users/si01/Documents/workspace/Android/StockCheck/app/src/main/res-screen/login/layout-port/scan_activity.xml"
+    },
+    {
+        "merged": "/Users/si01/Documents/workspace/Android/StockCheck/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout-port/map_info_window.xml",
+        "source": "/Users/si01/Documents/workspace/Android/StockCheck/app/src/main/res-screen/login/layout-port/map_info_window.xml"
+    },
+    {
+        "merged": "/Users/si01/Documents/workspace/Android/StockCheck/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout-port/search_item.xml",
+        "source": "/Users/si01/Documents/workspace/Android/StockCheck/app/src/main/res-screen/login/layout-port/search_item.xml"
+    },
+    {
+        "merged": "/Users/si01/Documents/workspace/Android/StockCheck/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout-port/main_activity.xml",
+        "source": "/Users/si01/Documents/workspace/Android/StockCheck/app/src/main/res-screen/login/layout-port/main_activity.xml"
+    },
+    {
+        "merged": "/Users/si01/Documents/workspace/Android/StockCheck/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout-port/scan_car_item.xml",
+        "source": "/Users/si01/Documents/workspace/Android/StockCheck/app/src/main/res-screen/login/layout-port/scan_car_item.xml"
+    },
+    {
+        "merged": "/Users/si01/Documents/workspace/Android/StockCheck/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout-port/scan_car_activity.xml",
+        "source": "/Users/si01/Documents/workspace/Android/StockCheck/app/src/main/res-screen/login/layout-port/scan_car_activity.xml"
+    },
+    {
+        "merged": "/Users/si01/Documents/workspace/Android/StockCheck/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout-port/setting_activity.xml",
+        "source": "/Users/si01/Documents/workspace/Android/StockCheck/app/src/main/res-screen/login/layout-port/setting_activity.xml"
+    }
+]

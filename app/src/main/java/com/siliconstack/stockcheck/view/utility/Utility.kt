@@ -2,27 +2,23 @@ package com.siliconstack.stockcheck.view.utility
 
 import android.app.Activity
 import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.*
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.net.Uri
 import android.net.wifi.WifiManager
+import android.support.media.ExifInterface
+import android.util.TypedValue
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import com.google.common.primitives.Chars
+import com.siliconstack.stockcheck.AppApplication
 import com.siliconstack.stockcheck.AppApplication.Companion.gson
-import com.siliconstack.stockcheck.R
+import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Pattern
-import android.util.TypedValue
-import com.siliconstack.stockcheck.AppApplication
-import java.io.*
-import android.content.pm.PackageManager
-import android.graphics.Bitmap
-
-
-
-
 
 
 class Utility{
@@ -151,7 +147,7 @@ class Utility{
             val cs = Canvas(dest)
             val tPaint = Paint()
             tPaint.textSize=Utility.convertSPtoPIXEL(20F)
-            tPaint.color = AppApplication.instance.resources.getColor(R.color.orange)
+            tPaint.color = AppApplication.instance.resources.getColor(com.siliconstack.stockcheck.R.color.orange)
             tPaint.isAntiAlias=true
             tPaint.style = Paint.Style.FILL
             cs.drawBitmap(bm, 0F, 0F, null)
@@ -185,7 +181,7 @@ class Utility{
             val cs = Canvas(dest)
             val tPaint = Paint()
             tPaint.textSize=Utility.convertSPtoPIXEL(20F)
-            tPaint.color = AppApplication.instance.resources.getColor(R.color.orange)
+            tPaint.color = AppApplication.instance.resources.getColor(com.siliconstack.stockcheck.R.color.orange)
             tPaint.isAntiAlias=true
             tPaint.style = Paint.Style.FILL
             cs.drawBitmap(bitmap, 0F, 0F, null)
@@ -214,7 +210,7 @@ class Utility{
             bitmapOption.inMutable = true
             bitmapOption.inScaled = false
             val bitmap= Bitmap.createScaledBitmap(BitmapFactory.decodeResource(context.resources, resId, bitmapOption),
-                    context.resources.getDimension(R.dimen.car_box_width).toInt(), 100, true)
+                    context.resources.getDimension(com.siliconstack.stockcheck.R.dimen.car_box_width).toInt(), 100, true)
             val baos = ByteArrayOutputStream()
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
             val byteArrayImage = baos.toByteArray()
@@ -231,7 +227,7 @@ class Utility{
         }
 
         fun isTablet(context: Context):Boolean{
-            return context.resources.getBoolean(R.bool.isTablet)
+            return context.resources.getBoolean(com.siliconstack.stockcheck.R.bool.isTablet)
         }
 
         fun isOnlyDigit(content:String):Boolean{
@@ -299,5 +295,63 @@ class Utility{
             return Bitmap.createScaledBitmap(bitmap, resizedWidth, resizedHeight, false)
         }
 
+        fun decodeImageFromFiles(path:String , width:Int , height:Int ):Bitmap {
+            val scaleOptions = BitmapFactory.Options()
+            scaleOptions.inJustDecodeBounds = true;
+            BitmapFactory.decodeFile(path, scaleOptions);
+            var scale = 1;
+            while (scaleOptions.outWidth / scale / 2 >= width
+                    && scaleOptions.outHeight / scale / 2 >= height) {
+                scale *= 2;
+            }
+
+            val outOptions = BitmapFactory.Options()
+            outOptions.inSampleSize = scale;
+            var bitmap=BitmapFactory.decodeFile(path, outOptions);
+
+            val exif = ExifInterface(path)
+            val orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_UNDEFINED)
+            val matrix = Matrix()
+            when (orientation) {
+                ExifInterface.ORIENTATION_ROTATE_90 -> matrix.postRotate(90F)
+                ExifInterface.ORIENTATION_ROTATE_180 -> matrix.postRotate(180F)
+                ExifInterface.ORIENTATION_ROTATE_270 -> matrix.postRotate(270F)
+                else -> {
+                }
+            }
+            bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+            return bitmap
+        }
+
+        fun getMetaData(context: Context?,name: String): String? {
+            try {
+                val appInfo = context?.packageManager?.getApplicationInfo(
+                        context?.packageName, PackageManager.GET_META_DATA)
+                if (appInfo?.metaData != null) {
+                    return appInfo.metaData.getString(name)
+                }
+                return null
+            } catch (e: PackageManager.NameNotFoundException) {
+                return null
+            }
+        }
+
+        fun getJsonFromAsset(context: Context,name:String):String{
+            var json: String? = null
+            try {
+                val inputStream = context.assets.open(name)
+                val size = inputStream.available()
+                val buffer = ByteArray(size)
+                inputStream.read(buffer)
+                inputStream.close()
+
+                json = String(buffer)
+
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+            return json?:""
+
+        }
     }
 }

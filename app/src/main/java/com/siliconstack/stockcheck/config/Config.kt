@@ -24,6 +24,7 @@ class Config{
             val COMBINE_DATE_TIME_FORMAT : String = "dd/MM/yyyy HH:mm"
                         val UI_DATE_FORMAT : String = "dd/MM/yyyy"
             val UI_TIME_FORMAT : String = "h:mm a"
+            val REQUEST_OPEN_CAMERA_DIRECTLY = 100
         }
 
 }

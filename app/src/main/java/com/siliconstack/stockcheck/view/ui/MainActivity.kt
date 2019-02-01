@@ -7,6 +7,8 @@ import android.databinding.adapters.ViewGroupBindingAdapter.setListener
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import com.google.common.reflect.TypeToken
+import com.google.gson.Gson
 import com.google.gson.stream.JsonReader
 import com.siliconstack.stockcheck.AppApplication
 import com.siliconstack.stockcheck.PreferenceSetting
@@ -154,6 +156,9 @@ class MainActivity : BaseActivity() {
 
         mainActivityBinding.btnScanDriver.setOnClickListener {
             startActivity<ScanActivity>("scanEnum" to ScanActivity.SCAN_ENUM.DRIVER.ordinal)
+        }
+        mainActivityBinding.btnScanCar.setOnClickListener {
+            startActivity<ScanActivity>("scanEnum" to ScanActivity.SCAN_ENUM.CAR.ordinal)
         }
 
     }

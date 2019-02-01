@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/si01/Documents/workspace/Android/StockCheck/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/camera_activity.xml",
+        "source": "/Users/si01/Documents/workspace/Android/StockCheck/app/src/main/res-main/layout/camera_activity.xml"
+    },
+    {
+        "merged": "/Users/si01/Documents/workspace/Android/StockCheck/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/loading_view.xml",
+        "source": "/Users/si01/Documents/workspace/Android/StockCheck/app/src/main/res-main/layout/loading_view.xml"
+    }
+]

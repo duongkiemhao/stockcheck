@@ -3,6 +3,7 @@ package com.siliconstack.stockcheck.di
 import com.google.gson.Gson
 import com.siliconstack.stockcheck.AppApplication
 import com.siliconstack.stockcheck.BuildConfig
+import com.siliconstack.stockcheck.api.GoogleVisionApi
 
 import com.siliconstack.stockcheck.api.OCRApi
 import com.siliconstack.stockcheck.api.TeleserviceApi
@@ -62,6 +63,17 @@ class NetModule() {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpClient)
                 .build().create(TeleserviceApi::class.java)
+    }
+
+
+    @Provides
+    fun provideGoogleVisionApi(gson: Gson, okHttpClient: OkHttpClient): GoogleVisionApi {
+        return Retrofit.Builder()
+                .baseUrl("http://any.com/")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(okHttpClient)
+                .build().create(GoogleVisionApi::class.java)
     }
 
 }

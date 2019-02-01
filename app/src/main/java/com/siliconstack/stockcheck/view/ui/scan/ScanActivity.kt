@@ -11,6 +11,8 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v4.app.Fragment
+import android.support.v4.content.FileProvider
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
@@ -21,7 +23,13 @@ import com.google.api.client.http.javanet.NetHttpTransport
 import com.google.api.services.vision.v1.Vision
 import com.google.api.services.vision.v1.VisionRequestInitializer
 import com.google.api.services.vision.v1.model.*
+import com.google.common.reflect.TypeToken
+import com.google.gson.Gson
+import com.google.gson.JsonArray
+import com.orhanobut.logger.Logger
 import com.siliconstack.stockcheck.AppApplication
+import com.siliconstack.stockcheck.AppApplication.Companion.gson
+import com.siliconstack.stockcheck.BuildConfig
 import com.siliconstack.stockcheck.PreferenceSetting
 import com.siliconstack.stockcheck.R
 import com.siliconstack.stockcheck.config.Config
@@ -49,6 +57,7 @@ import org.jetbrains.anko.collections.forEachReversedWithIndex
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.uiThread
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Pattern
@@ -56,7 +65,7 @@ import javax.inject.Inject
 import kotlin.collections.ArrayList
 
 
-class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityListener{
+class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityListener {
 
 
     @Inject
@@ -68,6 +77,7 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityLis
     val REQUEST_QRCODE=101
     val REQUEST_BARCODE=100
     val REQUEST_CHOOSE_FROM_GALLERY=102
+    val REQUEST_CAR=103
     lateinit var rxPermissions: RxPermissions
     var result:String?=null
     var scanEnum:Int = 0
@@ -80,13 +90,14 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityLis
     var nameModel:FilterDialogModel?=null
     var scanResultFragment:ScanResultFragment?=null
     var ocrModel: OCRModel?=null
+    var photoFile: File? = null
     enum class SCANTYPE {
         DRIVERLICENCE, VIN,REGO
     }
 
     //scan
     enum class SCAN_ENUM{
-        VIN, REGO,BARCODE,QRCODE,DRIVER
+        VIN, REGO,BARCODE,QRCODE,DRIVER,CAR
     }
 
     override fun supportFragmentInjector() = dispatchingAndroidInjector
@@ -132,19 +143,41 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityLis
                                 val intent = Intent(this, ZXingScannerActivity::class.java)
                                 startActivityForResult(intent, REQUEST_BARCODE)
                             }
-                            SCAN_ENUM.DRIVER.ordinal ->
-                                startActivity<CameraActivity>()
-                            else -> {
+                            SCAN_ENUM.QRCODE.ordinal  -> {
                                 val intent = Intent(this, ZXingScannerActivity::class.java)
                                 startActivityForResult(intent, REQUEST_QRCODE)
                             }
-
-
+                            SCAN_ENUM.DRIVER.ordinal ->
+                                startActivity<CameraActivity>()
+                            SCAN_ENUM.CAR.ordinal ->
+                                startActivity<CameraActivity>()
+                                //openNativeCamera()
                         }
                     }
                 }
 
 
+    }
+
+    private fun openNativeCamera() {
+
+        val takePictureIntent = Intent("android.media.action.IMAGE_CAPTURE")
+        if (takePictureIntent.resolveActivity(packageManager) != null) {
+            // Create the File where the photo should go
+            try {
+                photoFile = Utility.createImageFile(this)
+            } catch (ex: Exception) {
+                ex.printStackTrace()
+
+            }
+            photoFile?.let {
+                val photoURI = FileProvider.getUriForFile(this,
+                        BuildConfig.APPLICATION_ID+".fileprovider", it)
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                startActivityForResult(takePictureIntent, REQUEST_CAR)
+            }
+
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -179,7 +212,7 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityLis
                 val result = CropImage.getActivityResult(data);
                     if (resultCode == RESULT_OK) {
                         val resultUri = result.uri
-                        val resizedBitmap = Utility.scaleBitmapDown(MediaStore.Images.Media.getBitmap(getContentResolver(), resultUri),840)
+                        val resizedBitmap = Utility.scaleBitmapDown(MediaStore.Images.Media.getBitmap(contentResolver, resultUri),840)
                         scanActivityBinding.imageView.setImageBitmap(resizedBitmap)
                         when(scanEnum){
                             SCAN_ENUM.DRIVER.ordinal ->{
@@ -191,12 +224,24 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityLis
                             SCAN_ENUM.REGO.ordinal ->{
                                 scanRegoAPI(resizedBitmap)
                             }
+                            SCAN_ENUM.CAR.ordinal ->{
+                                startActivity<ScanCarActivity>("url" to Utility.saveBitmapToFile(resizedBitmap))
+                            }
                         }
 
 
                     } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
 
                     }
+            }
+            REQUEST_CAR ->{
+                when(resultCode){
+                    Activity.RESULT_OK ->{
+                        photoFile?.let {
+                            startActivity<ScanCarActivity>("url" to it.path)
+                        }
+                    }
+                }
             }
         }
     }
@@ -338,7 +383,8 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityLis
                 3
             SCAN_ENUM.QRCODE.ordinal ->
                 4
-            else -> 5//Driver Licence
+            SCAN_ENUM.DRIVER.ordinal -> 5
+            else -> 6
 
         }
     }
@@ -351,7 +397,11 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityLis
                 "SCAN REGO"
             SCAN_ENUM.BARCODE.ordinal ->
                 "SCAN BARCODE"
-            else -> "SCAN QRCODE"
+            SCAN_ENUM.QRCODE.ordinal ->
+                "SCAN QRCODE"
+            SCAN_ENUM.DRIVER.ordinal ->
+                "SCAN DRIVER LICENCE"
+            else -> "SCAN CAR"
 
         }
     }
@@ -367,7 +417,8 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityLis
         nameModel=PreferenceSetting.nameSetting
 
 
-        if(scanEnum==SCAN_ENUM.VIN.ordinal || scanEnum==SCAN_ENUM.REGO.ordinal || scanEnum==SCAN_ENUM.DRIVER.ordinal)
+        if(scanEnum==SCAN_ENUM.VIN.ordinal || scanEnum==SCAN_ENUM.REGO.ordinal || scanEnum==SCAN_ENUM.DRIVER.ordinal
+        || scanEnum==SCAN_ENUM.CAR.ordinal)
         {
             scanActivityBinding.btnGallery.visibility=View.VISIBLE
             scanActivityBinding.btnCamera.visibility=View.VISIBLE
@@ -396,17 +447,24 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityLis
     fun onMessageEvent(mainEventBus: MainEventBus) {
         mainEventBus.bitmapURL?.let {
             val bitmap=Utility.getBitmapFromURL(it)
-            scanActivityBinding.imageView.setImageBitmap(bitmap)
+
             when(scanEnum){
                 SCAN_ENUM.DRIVER.ordinal ->{
+                    scanActivityBinding.imageView.setImageBitmap(bitmap)
                     scanDriverLicenceAPI(bitmap)
                 }
                 SCAN_ENUM.VIN.ordinal ->{
+                    scanActivityBinding.imageView.setImageBitmap(bitmap)
                     scanVinAPI(bitmap)
                 }
                 SCAN_ENUM.REGO.ordinal ->{
+                    scanActivityBinding.imageView.setImageBitmap(bitmap)
                     scanRegoAPI(bitmap)
                 }
+                SCAN_ENUM.CAR.ordinal ->{
+                    startActivity<ScanCarActivity>("url" to it)
+                }
+
             }
 
         }
@@ -498,6 +556,7 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector ,ScanActivityLis
             }
         })
     }
+
 
     fun showResultDialog(){
         if(ocrModel==null)

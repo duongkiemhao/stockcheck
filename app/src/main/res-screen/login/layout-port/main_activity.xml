@@ -121,6 +121,20 @@
                         android:textColor="@color/white"
                         android:textSize="22sp" />
                 </com.balysv.materialripple.MaterialRippleLayout>
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:layout_marginLeft="50dp" app:mrl_rippleOverlay="true"
+                    android:layout_width="100dp"
+                    android:background="@drawable/textbox_white_solid_trans"
+                    android:layout_height="100dp" app:mrl_rippleDuration="@integer/ripple_duration">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Car"  android:id="@+id/btn_scan_car"
+                        android:textColor="@color/white"
+                        android:textSize="22sp"
+                        tools:ignore="HardcodedText" />
+                </com.balysv.materialripple.MaterialRippleLayout>
             </LinearLayout>
             <ImageView
                 android:layout_width="wrap_content" android:id="@+id/imageView"

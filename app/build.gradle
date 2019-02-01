@@ -31,10 +31,10 @@ android {
             debuggable true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "SERVER_OCR_URL", '"https://ocr.siliconstack.com.au/"'
+            //buildConfigField "String", "SERVER_OCR_URL", '"https://ocr.siliconstack.com.au/"'
+            buildConfigField "String", "SERVER_OCR_URL", '"http://192.168.1.163/ocr/"'
             buildConfigField "String", "SERVER_TELESERVICE_URL", '"http://13.210.63.37:8090/Teleservice/api/"'
-            //buildConfigField "String", "SERVER_OCR_URL", '"http://192.168.1.63/ocr/"'
-
+            buildConfigField "String", "GOOGLE_VISION_URL", '"https://vision.googleapis.com/v1/images:annotate?key="'
         }
 
 
@@ -198,6 +198,7 @@ dependencies {
     implementation 'com.camerakit:jpegkit:0.1.0'
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.0'
+//    compile 'com.google.cloud:google-cloud-vision:1.59.0'
 
 
 
