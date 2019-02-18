@@ -1,6 +1,6 @@
 <resources>
     <bool name="isTablet">false</bool>
-    <string name="app_name">Stock Check</string>
+    <!--<string name="app_name">Stock Check</string>-->
     <!--login-->
     <string name="msg_error_login">User not logged in. PLease try again!</string>
     <string name="msg_error_unauthorize">Sorry, session was expired</string>

@@ -37,13 +37,8 @@ class ScanViewModel @Inject constructor (application: AppApplication): AndroidVi
     fun getGoogleVision(key:String,googleVisionRequest: GoogleVisionRequest) : LiveData<Resource<BaseApiResponse>> {
         return homeRepository.getGoogleVision(key,googleVisionRequest)
     }
-    fun getMake() : LiveData<Resource<BaseApiResponse>> {
-        return homeRepository.getMake()
-    }
-    fun getModel(make:String) : LiveData<Resource<BaseApiResponse>> {
-        return homeRepository.getModel(make)
-    }
-    fun getCarDetail(year:String?,make:String?,family:String?,variant:String?) : LiveData<Resource<BaseApiResponse>> {
-        return homeRepository.getCarDetail(year,make,family,variant)
+
+    fun getCarDetail(ocrRequest: OCRRequest) : LiveData<Resource<BaseApiResponse>> {
+        return homeRepository.getCarDetail(ocrRequest)
     }
 }

@@ -3,18 +3,12 @@ package com.siliconstack.stockcheck.view.ui.scan
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.RequestOptions
 import com.siliconstack.stockcheck.R
 import com.siliconstack.stockcheck.model.CarModel
-import com.siliconstack.stockcheck.view.utility.Utility
-import java.util.*
 
 
-class ScanCarAdapter(var items: List<CarModel>) :
+class ScanCarAdapter(var items: List<CarModel.CarDetail>) :
         RecyclerView.Adapter<ScanCarAdapter.ViewHolder>() {
 
 

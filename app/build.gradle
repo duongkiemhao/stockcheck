@@ -3,6 +3,9 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'io.fabric'
+project.ext {
+    defaultApplicationId = "com.siliconstack.stockcheck"
+}
 
 android {
     compileSdkVersion 28
@@ -11,7 +14,7 @@ android {
         minSdkVersion 24
         targetSdkVersion 27
         versionCode 1
-        versionName "1.0.4"
+        versionName "1.0.6"
         multiDexEnabled true
         manifestPlaceholders = [HOCKEYAPP_APP_ID: "48d36a0a45fc4393bf1b3ba6d91a609e",applicationIdWithSuffix: "${applicationId}" ]
 
@@ -31,12 +34,28 @@ android {
             debuggable true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            //buildConfigField "String", "SERVER_OCR_URL", '"https://ocr.siliconstack.com.au/"'
             buildConfigField "String", "SERVER_OCR_URL", '"http://192.168.1.163/ocr/"'
             buildConfigField "String", "SERVER_TELESERVICE_URL", '"http://13.210.63.37:8090/Teleservice/api/"'
             buildConfigField "String", "GOOGLE_VISION_URL", '"https://vision.googleapis.com/v1/images:annotate?key="'
+            applicationIdSuffix ".debug"
+            resValue "string", "app_name", "StockCheck Debug"
+            manifestPlaceholders = [ applicationIdWithSuffix: defaultApplicationId + applicationIdSuffix ]
         }
 
+        production {
+            initWith debug
+            buildConfigField "String", "SERVER_OCR_URL", '"https://ocr.siliconstack.com.au/"'
+            applicationIdSuffix ""
+            resValue "string", "app_name", "StockCheck"
+            manifestPlaceholders = [ applicationIdWithSuffix: defaultApplicationId + applicationIdSuffix ]
+        }
+        aws {
+            initWith debug
+            buildConfigField "String", "SERVER_OCR_URL", '"http://siliconstackocr-dev.us-east-1.elasticbeanstalk.com/"'
+            applicationIdSuffix ".AWS"
+            resValue "string", "app_name", "StockCheck AWS"
+            manifestPlaceholders = [ applicationIdWithSuffix: defaultApplicationId + applicationIdSuffix ]
+        }
 
     }
     dataBinding {
