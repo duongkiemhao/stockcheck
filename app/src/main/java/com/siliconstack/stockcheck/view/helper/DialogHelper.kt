@@ -186,7 +186,22 @@ class DialogHelper {
                         }
 
                         .build()
-
+        fun materialSingleChoiceDialog(title: String, selectPosition:Int, callback: MaterialDialog.ListCallback, context: Context): MaterialDialog =
+                MaterialDialog.Builder(context)
+                        .title(title)
+                        .cancelable(false)
+                        .canceledOnTouchOutside(false)
+                        .items(R.array.url)
+                        .itemsCallbackSingleChoice(selectPosition) { dialog, itemView, which, text ->
+                            callback.onSelection(dialog,itemView,which,text)
+                            dialog.dismiss()
+                            false
+                        }
+                        .negativeText("Close")
+                        .onNegative{ dialog, which ->
+                            dialog.dismiss()
+                        }
+                        .show()
 
     }
 

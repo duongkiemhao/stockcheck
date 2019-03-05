@@ -8,8 +8,8 @@ import com.siliconstack.stockcheck.R
 import com.siliconstack.stockcheck.model.CarModel
 
 
-class ScanCarAdapter(var items: List<CarModel.CarDetail>) :
-        RecyclerView.Adapter<ScanCarAdapter.ViewHolder>() {
+class ScanCarItemAdapter(var items: List<CarModel.CarDetail>) :
+        RecyclerView.Adapter<ScanCarItemAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

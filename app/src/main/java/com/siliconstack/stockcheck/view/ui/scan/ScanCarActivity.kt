@@ -9,13 +9,11 @@ import android.support.v4.app.Fragment
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
-import com.google.gson.Gson
-import com.orhanobut.logger.Logger
 import com.siliconstack.stockcheck.AppApplication
-import com.siliconstack.stockcheck.BuildConfig
 import com.siliconstack.stockcheck.R
 import com.siliconstack.stockcheck.model.*
 import com.siliconstack.stockcheck.view.ui.base.BaseActivity
@@ -26,9 +24,7 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import es.dmoral.toasty.Toasty
 import org.jetbrains.anko.backgroundColor
-import java.util.regex.Pattern
 import javax.inject.Inject
-import kotlin.collections.ArrayList
 
 
 class ScanCarActivity : BaseActivity(), HasSupportFragmentInjector  {
@@ -87,13 +83,8 @@ class ScanCarActivity : BaseActivity(), HasSupportFragmentInjector  {
             if (resource != null) {
                 when (resource.status) {
                     Resource.Status.SUCCESS -> {
-                        val carModel= resource.data as CarModel
-                        if(carModel!=null){
-                            loadInfo(carModel)
-                        }
-                        else{
-                            Toasty.info(this@ScanCarActivity,"Error , please try again").show()
-                        }
+                        val carModels= resource.data as List<CarModel>
+                        loadInfo(carModels)
                     }
                     Resource.Status.ERROR -> {
                         progressDialog.dismiss()
@@ -105,30 +96,17 @@ class ScanCarActivity : BaseActivity(), HasSupportFragmentInjector  {
         })
     }
 
-    private fun loadInfo(carModel: CarModel){
-        Glide.with(this).load(carModel.imageURL).apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL))
+    private fun loadInfo(carModels: List<CarModel>){
+        if(carModels.count()>0)
+            scanCarActivityBinding.wormDotsIndicator.visibility= View.VISIBLE
+        Glide.with(this@ScanCarActivity).load(imagePath).apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.ALL))
                 .apply(RequestOptions()
                 ).into(scanCarActivityBinding.imgCar)
-        scanCarActivityBinding.txtMake.text="Make: "+(carModel.make?:"")
-        scanCarActivityBinding.txtModel.text="Model: "+(carModel.family?:"")
-        scanCarActivityBinding.txtVariant.text="Variant: "+(carModel.variant?:"")
-        scanCarActivityBinding.txtYear.text="Year: "+(carModel.year?:"")
-        scanCarActivityBinding.txtDesc.text="Description: "+(carModel.desc?:"")
-        scanCarActivityBinding.viewColor.backgroundColor=Color.parseColor(carModel.color)
-        loadRecyler(carModel.items)
+        scanCarActivityBinding.viewPager.adapter=ViewPagerAdapter(carModels,imagePath?:"")
+        scanCarActivityBinding.wormDotsIndicator.setViewPager(scanCarActivityBinding.viewPager)
+        scanCarActivityBinding.viewPager.setPageTransformer(true,ZoomOutPageTransformer())
     }
 
 
-    private fun loadRecyler(items:List<CarModel.CarDetail>){
-
-        scanCarActivityBinding.recyclerView.apply {
-            adapter= ScanCarAdapter(items)
-            layoutManager= LinearLayoutManager(this@ScanCarActivity)
-
-            val divider= DividerItemDecoration(context, RecyclerView.VERTICAL)
-            divider.setDrawable(resources.getDrawable(R.drawable.list_divider_gray))
-            addItemDecoration(divider)
-        }
-    }
 }
 

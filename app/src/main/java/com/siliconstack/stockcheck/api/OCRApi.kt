@@ -16,5 +16,5 @@ interface OCRApi {
 
 
     @POST("GlassGuide/CarDetail")
-    fun getCarDetail(@Body ocrRequest: OCRRequest): Call<CarModel>
+    fun getCarDetail(@Body ocrRequest: OCRRequest): Call<List<CarModel>>
 }

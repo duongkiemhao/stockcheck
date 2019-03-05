@@ -7,18 +7,22 @@ import android.databinding.adapters.ViewGroupBindingAdapter.setListener
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import com.afollestad.materialdialogs.MaterialDialog
 import com.google.common.reflect.TypeToken
 import com.google.gson.Gson
 import com.google.gson.stream.JsonReader
 import com.siliconstack.stockcheck.AppApplication
 import com.siliconstack.stockcheck.PreferenceSetting
 import com.siliconstack.stockcheck.R
+import com.siliconstack.stockcheck.config.Config
 import com.siliconstack.stockcheck.databinding.MainActivityBinding
 import com.siliconstack.stockcheck.model.FloorModel
 import com.siliconstack.stockcheck.model.LocationModel
 import com.siliconstack.stockcheck.model.MainModel
 import com.siliconstack.stockcheck.model.OperatorModel
 import com.siliconstack.stockcheck.view.control.GsonGenericClass
+import com.siliconstack.stockcheck.view.helper.DialogHelper
+import com.siliconstack.stockcheck.view.helper.PreferenceHelper
 import com.siliconstack.stockcheck.view.ui.base.BaseActivity
 import com.siliconstack.stockcheck.view.ui.scan.ScanActivity
 import com.siliconstack.stockcheck.view.ui.search.SearchActivity
@@ -39,6 +43,7 @@ class MainActivity : BaseActivity() {
     //    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
     lateinit var mainActivityBinding: MainActivityBinding
     var doubleBackToExitPressedOnce: Boolean = false
+    var countHiddenMenuClick=0
 
 
 
@@ -159,6 +164,26 @@ class MainActivity : BaseActivity() {
         }
         mainActivityBinding.btnScanCar.setOnClickListener {
             startActivity<ScanActivity>("scanEnum" to ScanActivity.SCAN_ENUM.CAR.ordinal)
+        }
+        mainActivityBinding.txtTitle.setOnClickListener {
+            if (countHiddenMenuClick>=10) {
+                AppApplication.handler.removeCallbacksAndMessages(null)
+                countHiddenMenuClick=0
+                resources.getStringArray(R.array.url).forEachIndexed { index, s ->
+                    if(s==PreferenceHelper.getBaseURL()){
+                        DialogHelper.materialSingleChoiceDialog("Please select OCR Server url",index,  MaterialDialog.ListCallback { dialog, itemView, position, text ->
+                            PreferenceHelper.setBaseURL(text.toString())
+
+                        },this@MainActivity)
+                        return@setOnClickListener
+                    }
+                }
+            }
+            countHiddenMenuClick++
+            AppApplication.handler.removeCallbacksAndMessages(null)
+            AppApplication.handler.postDelayed({
+                countHiddenMenuClick = 0
+            }, 5000)
         }
 
     }

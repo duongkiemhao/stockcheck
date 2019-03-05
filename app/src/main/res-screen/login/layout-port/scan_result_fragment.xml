@@ -178,23 +178,51 @@
 
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="License Number"
-                    android:textColor="#B2BCC6" />
 
-                <EditText
-                    android:id="@+id/edi_license_no"
-                    style="@style/textbox"
+
+                <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/textbox_height_30"
-                    android:layout_centerVertical="true"
-                    android:imeOptions="actionDone"
-                    android:maxLength="20"
-                    android:text="@={viewModel.ocrModel.driverLicenceNumber}"
-                    android:textSize="14sp" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp" android:id="@+id/lbl_licence_no"
+                        android:text="License Number" app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/lbl_version"
+                        android:textColor="#B2BCC6" />
+
+                    <EditText
+                        android:id="@+id/edi_license_no"
+                        style="@style/textbox" app:layout_constraintTop_toBottomOf="@+id/lbl_licence_no"
+                        android:layout_width="0dp" app:layout_constraintRight_toLeftOf="@+id/edi_version"
+                        android:layout_height="@dimen/textbox_height_30"
+                        android:layout_centerVertical="true"
+                        android:imeOptions="actionDone"
+                        android:maxLength="100" app:layout_constraintLeft_toLeftOf="parent"
+                        android:text="@={viewModel.ocrModel.driverLicenceNumber}"
+                        android:textSize="14sp" />
+
+                    <TextView android:layout_marginStart="10dp"
+                        android:layout_width="0dp" app:layout_constraintLeft_toRightOf="@+id/lbl_licence_no"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp" android:id="@+id/lbl_version"
+                        android:text="Version" app:layout_constraintRight_toRightOf="parent"
+                        android:textColor="#B2BCC6" />
+
+                    <EditText
+                        android:id="@+id/edi_version"
+                        style="@style/textbox" android:layout_marginStart="10dp"
+                        android:layout_width="0dp" app:layout_constraintLeft_toRightOf="@+id/edi_license_no"
+                        android:layout_height="@dimen/textbox_height_30"
+                        android:layout_centerVertical="true" app:layout_constraintRight_toRightOf="parent"
+                        android:imeOptions="actionDone" app:layout_constraintTop_toBottomOf="@+id/lbl_version"
+                        android:maxLength="100"
+                        android:text="@={viewModel.ocrModel.version}"
+                        android:textSize="14sp" />
+                </android.support.constraint.ConstraintLayout>
+
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"

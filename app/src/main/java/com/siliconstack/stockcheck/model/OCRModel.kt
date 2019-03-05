@@ -29,9 +29,12 @@ data class OCRModel(
         @SerializedName("Vin")
                 var vin: String?,
                 @SerializedName("Rego")
-                var rego: String?
+                var rego: String?,
+        @SerializedName("Version")
+var version: String?
 ):BaseObservable(), Parcelable {
         constructor(parcel: Parcel) : this(
+                parcel.readString(),
                 parcel.readString(),
                 parcel.readString(),
                 parcel.readString(),
@@ -59,6 +62,7 @@ data class OCRModel(
                 parcel.writeString(suburb)
                 parcel.writeString(vin)
                 parcel.writeString(rego)
+                parcel.writeString(version)
         }
 
         override fun describeContents(): Int {

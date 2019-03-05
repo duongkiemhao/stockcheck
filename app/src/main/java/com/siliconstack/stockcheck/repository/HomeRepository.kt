@@ -3,31 +3,46 @@ package com.siliconstack.stockcheck.repository
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
+import com.siliconstack.stockcheck.AppApplication
 import com.siliconstack.stockcheck.api.GoogleVisionApi
 import com.siliconstack.stockcheck.api.OCRApi
 import com.siliconstack.stockcheck.api.TeleserviceApi
 import com.siliconstack.stockcheck.config.Config
 import com.siliconstack.stockcheck.model.*
+import com.siliconstack.stockcheck.view.helper.PreferenceHelper
 import io.reactivex.Observable
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 
-class HomeRepository (val OCRApi: OCRApi,val teleserviceApi: TeleserviceApi,val googleVisionApi: GoogleVisionApi) : BaseRepository() {
+class HomeRepository (val OCRApi: OCRApi,val teleserviceApi: TeleserviceApi,val googleVisionApi: GoogleVisionApi,val okHttpClient: OkHttpClient) : BaseRepository() {
 
+
+    fun createOcrApiInstance():OCRApi{
+        return Retrofit.Builder()
+                .baseUrl(PreferenceHelper.getBaseURL())
+                .addConverterFactory(GsonConverterFactory.create(AppApplication.gson))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(okHttpClient)
+                .build().create(com.siliconstack.stockcheck.api.OCRApi::class.java)!!
+    }
 
     fun getDriverLicence(ocrRequest: OCRRequest): LiveData<Resource<BaseApiResponse>> {
         var data = MutableLiveData<Resource<OCRModel>>()
-        OCRApi.getDriverLicence(ocrRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<OCRModel>(data) {})
+        createOcrApiInstance().getDriverLicence(ocrRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<OCRModel>(data) {})
         return data as MutableLiveData<Resource<BaseApiResponse>>
     }
     fun getVin(ocrRequest: OCRRequest): LiveData<Resource<BaseApiResponse>> {
         var data = MutableLiveData<Resource<OCRModel>>()
-        OCRApi.getVin(ocrRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<OCRModel>(data) {})
+        createOcrApiInstance().getVin(ocrRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<OCRModel>(data) {})
         return data as MutableLiveData<Resource<BaseApiResponse>>
     }
 
     fun getRego(ocrRequest: OCRRequest): LiveData<Resource<BaseApiResponse>> {
         var data = MutableLiveData<Resource<OCRModel>>()
-        OCRApi.getRego(ocrRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<OCRModel>(data) {})
+        createOcrApiInstance().getRego(ocrRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<OCRModel>(data) {})
         return data as MutableLiveData<Resource<BaseApiResponse>>
     }
 
@@ -77,8 +92,8 @@ class HomeRepository (val OCRApi: OCRApi,val teleserviceApi: TeleserviceApi,val 
         return data as MutableLiveData<Resource<BaseApiResponse>>
     }
     fun getCarDetail(ocrRequest: OCRRequest): LiveData<Resource<BaseApiResponse>> {
-        var data = MutableLiveData<Resource<CarModel>>()
-        OCRApi.getCarDetail(ocrRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<CarModel>(data) {})
+        var data = MutableLiveData<Resource<List<CarModel>>>()
+        createOcrApiInstance().getCarDetail(ocrRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<List<CarModel>>(data) {})
         return data as MutableLiveData<Resource<BaseApiResponse>>
     }
 }

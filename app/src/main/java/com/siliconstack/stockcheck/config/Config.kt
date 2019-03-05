@@ -25,6 +25,7 @@ class Config{
                         val UI_DATE_FORMAT : String = "dd/MM/yyyy"
             val UI_TIME_FORMAT : String = "h:mm a"
             val REQUEST_OPEN_CAMERA_DIRECTLY = 100
+            var BASE_URL=BuildConfig.SERVER_OCR_URL
         }
 
 }

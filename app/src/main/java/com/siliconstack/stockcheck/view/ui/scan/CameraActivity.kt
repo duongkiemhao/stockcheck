@@ -69,7 +69,7 @@ class CameraActivity : AppCompatActivity() {
                 val w = cameraActivityBinding.capturedImage.width * bw / width
                 val h = cameraActivityBinding.capturedImage.height * bh / height
                 var resizedBitmap = Bitmap.createBitmap(bitmap, l, t, if(l+w>bw) bw else l+w , h)
-                resizedBitmap = Utility.scaleBitmapDown(resizedBitmap,1280)
+                resizedBitmap = Utility.scaleBitmapDown(resizedBitmap,800)
                 if (resizedBitmap != null) {
                     val mainEventBus= MainEventBus()
                     mainEventBus.bitmapURL= Utility.saveBitmapToFile(resizedBitmap)

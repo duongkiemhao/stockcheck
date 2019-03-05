@@ -6,6 +6,7 @@ import com.siliconstack.stockcheck.api.TeleserviceApi
 import com.siliconstack.stockcheck.repository.HomeRepository
 import dagger.Module
 import dagger.Provides
+import okhttp3.OkHttpClient
 import javax.inject.Singleton
 
 /**
@@ -16,8 +17,8 @@ class RepositoryModule{
 
     @Provides
     @Singleton
-    fun provideAppRepository(OCRApi: OCRApi,teleserviceApi: TeleserviceApi,googleVisionApi: GoogleVisionApi): HomeRepository {
-        return HomeRepository(OCRApi,teleserviceApi,googleVisionApi)
+    fun provideAppRepository(OCRApi: OCRApi,teleserviceApi: TeleserviceApi,googleVisionApi: GoogleVisionApi,okHttpClient: OkHttpClient): HomeRepository {
+        return HomeRepository(OCRApi,teleserviceApi,googleVisionApi,okHttpClient)
     }
 
 
