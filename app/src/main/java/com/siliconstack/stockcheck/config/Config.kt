@@ -26,6 +26,10 @@ class Config{
             val UI_TIME_FORMAT : String = "h:mm a"
             val REQUEST_OPEN_CAMERA_DIRECTLY = 100
             var BASE_URL=BuildConfig.SERVER_OCR_URL
+            val OCR_COUNTRY_CODE="vi-vn"
+            val OCR_SYSTEM_CODE="SSD"
+            val OCR_API_KEY="8315677f30cf43b5981759713b1c1273"
+
         }
 
 }

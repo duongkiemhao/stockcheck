@@ -26,6 +26,8 @@ import com.siliconstack.stockcheck.view.control.CameraOverlayViewGroup
 import com.siliconstack.stockcheck.view.eventbus.MainEventBus
 import com.siliconstack.stockcheck.view.utility.Utility
 import android.widget.RelativeLayout
+import com.otaliastudios.cameraview.CameraListener
+import com.otaliastudios.cameraview.GestureAction
 
 
 class CameraActivity : AppCompatActivity() {
@@ -50,8 +52,11 @@ class CameraActivity : AppCompatActivity() {
     fun setListener(){
 
         cameraActivityBinding.btnTake.setOnClickListener {
-            cameraActivityBinding.camera.captureImage { _, bytes ->
+            cameraActivityBinding.camera.capturePicture()
+        }
 
+        cameraActivityBinding.camera.addCameraListener(object : CameraListener() {
+            override fun onPictureTaken(it: ByteArray?) {
                 val width: Int = cameraActivityBinding.camera.width
                 val height: Int = cameraActivityBinding.camera.height
                 val options = BitmapFactory.Options()
@@ -59,9 +64,21 @@ class CameraActivity : AppCompatActivity() {
                 options.inMutable = true
                 options.inScaled = false
                 options.inSampleSize = 2
-                var bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size, options)
+
+                var bitmap = BitmapFactory.decodeByteArray(it, 0, it?.size!!, options)
                 val matrix = Matrix()
-                bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, false)
+                val rotation = this@CameraActivity.windowManager.defaultDisplay.rotation
+                var degrees = 0f
+                when (rotation) {
+                    Surface.ROTATION_0 -> degrees = 90f
+                    Surface.ROTATION_90 -> degrees = 0f
+                    Surface.ROTATION_180 -> degrees = 270f
+                    Surface.ROTATION_270 -> degrees = 180f
+                }
+                matrix.postRotate(degrees)
+
+
+                bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
                 val bh = bitmap!!.height
                 val bw = bitmap.width
                 val l = cameraActivityBinding.capturedImage.x.toInt() * bw / width
@@ -79,15 +96,14 @@ class CameraActivity : AppCompatActivity() {
                 }
 
 
+
             }
-        }
-
-
+        })
         cameraActivityBinding.overlayView.cameraOverlayViewGroupListener=object: CameraOverlayViewGroup.CameraOverlayViewGroupListener{
             override fun onTouch(motionEvent: MotionEvent) {
-                cameraActivityBinding.camera.onTouchEvent(motionEvent)
-            }
+                cameraActivityBinding.camera.dispatchTouchEvent(motionEvent)
 
+            }
         }
 
 
@@ -121,19 +137,20 @@ class CameraActivity : AppCompatActivity() {
 
                 }
             }
-        });
-        animatorSet.start();
+        })
+        animatorSet.start()
         cameraActivityBinding.capturedImage.postDelayed({
 
             frameDimension.add(cameraActivityBinding.capturedImage.width)
             frameDimension.add(cameraActivityBinding.capturedImage.height)
-            val mainEventBus= MainEventBus()
-            mainEventBus.frameDimension= frameDimension
             cameraActivityBinding.overlayView.myWidth= cameraActivityBinding.capturedImage.width.toFloat()
             cameraActivityBinding.overlayView.myHeight= cameraActivityBinding.capturedImage.height.toFloat()
             cameraActivityBinding.overlayView.requestLayout()
-            EventBus.getDefault().post(mainEventBus)
+
         },500)
+
+        cameraActivityBinding.camera.mapGesture(com.otaliastudios.cameraview.Gesture.TAP, GestureAction.FOCUS_WITH_MARKER)
+        cameraActivityBinding.camera.mapGesture(com.otaliastudios.cameraview.Gesture.PINCH, GestureAction.ZOOM)
 
     }
 
@@ -149,29 +166,20 @@ class CameraActivity : AppCompatActivity() {
     @SuppressLint("MissingPermission")
     override fun onResume() {
         super.onResume()
-        cameraActivityBinding.camera.onResume()
+        cameraActivityBinding.camera.start()
     }
 
     override fun onPause() {
         super.onPause()
-        cameraActivityBinding.camera.onPause()
+        cameraActivityBinding.camera.stop()
     }
 
-    override fun onStart() {
-        super.onStart()
-        cameraActivityBinding.camera.onStart()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        cameraActivityBinding.camera.onStop()
-    }
 
     override fun onDestroy() {
         super.onDestroy()
         animatorSet.removeAllListeners()
         animatorSet.cancel()
-        cameraActivityBinding.camera.onStop()
+        cameraActivityBinding.camera.destroy()
     }
 }
 

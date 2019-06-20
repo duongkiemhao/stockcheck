@@ -45,6 +45,8 @@ class AppApplication : MultiDexApplication(), HasActivityInjector  {
 
     }
 
+    var ocrToken:String?=null
+
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
         MultiDex.install(this)

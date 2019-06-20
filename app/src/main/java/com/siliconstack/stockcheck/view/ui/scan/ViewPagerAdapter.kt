@@ -39,7 +39,8 @@ class ViewPagerAdapter : PagerAdapter {
         val year=if(carModel.year.isNullOrBlank()) "" else if(carModel.year=="0") "" else carModel.year
         dataBinding.txtYear.text = "Year: " + year
         dataBinding.txtDesc.text = "Description: " + (carModel.desc ?: "")
-        dataBinding.viewColor.backgroundColor = Color.parseColor(carModel.color)
+        if(!carModel.color.isNullOrBlank())
+            dataBinding.viewColor.backgroundColor = Color.parseColor(carModel.color)
         dataBinding.recyclerView.apply {
             adapter = ScanCarItemAdapter(carModel.items?: arrayListOf())
             layoutManager = LinearLayoutManager(container.context)

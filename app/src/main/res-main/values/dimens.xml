@@ -19,4 +19,5 @@
     <dimen name="textbox_font_size_18">18sp</dimen>
 
     <dimen name="car_box_width">450dp</dimen>
+    <dimen name="camera_height">230dp</dimen>
 </resources>

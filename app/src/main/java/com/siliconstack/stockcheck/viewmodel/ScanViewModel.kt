@@ -25,20 +25,25 @@ class ScanViewModel @Inject constructor (application: AppApplication): AndroidVi
     init {
     }
 
-    fun getDriverLicence(ocrRequest: OCRRequest) : LiveData<Resource<BaseApiResponse>> {
-        return homeRepository.getDriverLicence(ocrRequest)
+    fun getDriverLicence(token:String,ocrRequest: OCRRequest) : LiveData<Resource<BaseApiResponse>> {
+        return homeRepository.getDriverLicence(token,ocrRequest)
     }
-    fun getVin(ocrRequest: OCRRequest) : LiveData<Resource<BaseApiResponse>> {
-        return homeRepository.getVin(ocrRequest)
+    fun getVin(token:String,ocrRequest: OCRRequest) : LiveData<Resource<BaseApiResponse>> {
+        return homeRepository.getVin(token,ocrRequest)
     }
-    fun getRego(ocrRequest: OCRRequest) : LiveData<Resource<BaseApiResponse>> {
-        return homeRepository.getRego(ocrRequest)
+    fun getRego(token:String,ocrRequest: OCRRequest) : LiveData<Resource<BaseApiResponse>> {
+        return homeRepository.getRego(token,ocrRequest)
     }
     fun getGoogleVision(key:String,googleVisionRequest: GoogleVisionRequest) : LiveData<Resource<BaseApiResponse>> {
         return homeRepository.getGoogleVision(key,googleVisionRequest)
     }
 
-    fun getCarDetail(ocrRequest: OCRRequest) : LiveData<Resource<BaseApiResponse>> {
-        return homeRepository.getCarDetail(ocrRequest)
+    fun getCarDetail(token:String,ocrRequest: OCRRequest) : LiveData<Resource<BaseApiResponse>> {
+        return homeRepository.getCarDetail(token,ocrRequest)
     }
+
+    fun authenOCRService(ocrAuthRequest: OCRAuthRequest) : LiveData<Resource<BaseApiResponse>> {
+        return homeRepository.getOCRAuth(ocrAuthRequest)
+    }
+
 }

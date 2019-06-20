@@ -12,10 +12,15 @@ import android.support.media.ExifInterface
 import android.util.TypedValue
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import com.google.common.primitives.Chars
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.google.gson.JsonDeserializer
 import com.siliconstack.stockcheck.AppApplication
 import com.siliconstack.stockcheck.AppApplication.Companion.gson
+import com.siliconstack.stockcheck.view.control.CarModelGsonAdapter
+import com.siliconstack.stockcheck.view.control.OCRModelGsonAdapter
 import java.io.*
+import java.lang.reflect.Type
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Pattern
@@ -353,5 +358,14 @@ class Utility{
             return json?:""
 
         }
+
+        fun randomString():String{
+            val source = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            return   (1..source.length)
+                    .map { source.random() }
+                    .joinToString("")
+        }
+
+
     }
 }

@@ -3,19 +3,23 @@ package com.siliconstack.stockcheck.view.ui.scan
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.graphics.Bitmap
-import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.afollestad.materialdialogs.MaterialDialog
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.google.gson.Gson
+import com.google.gson.JsonElement
+import com.google.gson.reflect.TypeToken
 import com.siliconstack.stockcheck.AppApplication
 import com.siliconstack.stockcheck.R
+import com.siliconstack.stockcheck.config.Config
 import com.siliconstack.stockcheck.model.*
+import com.siliconstack.stockcheck.view.control.CarModelGsonAdapter
+import com.siliconstack.stockcheck.view.helper.DialogHelper
 import com.siliconstack.stockcheck.view.ui.base.BaseActivity
 import com.siliconstack.stockcheck.view.utility.Utility
 import com.siliconstack.stockcheck.viewmodel.ScanViewModel
@@ -23,7 +27,6 @@ import dagger.android.AndroidInjection
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import es.dmoral.toasty.Toasty
-import org.jetbrains.anko.backgroundColor
 import javax.inject.Inject
 
 
@@ -68,22 +71,61 @@ class ScanCarActivity : BaseActivity(), HasSupportFragmentInjector  {
     private fun initInfo(){
         imagePath?.let {
             val bitmap=Utility.decodeImageFromFiles(it,600,400)
-            scanCar(bitmap)
+            authOCRService(bitmap)
         }
 
     }
 
 
-    private fun scanCar(bitmap: Bitmap){
-        var ocrRequest=OCRRequest()
-        ocrRequest.imageData=Utility.convertBitmapToBase64(bitmap)
+    private fun authOCRService(bitmap: Bitmap) {
+        val ocrAuthRequest = OCRAuthRequest(Config.OCR_SYSTEM_CODE, "Android OS:"+ Build.VERSION.RELEASE+" v"+Utility.getAppVersionName(), Utility.randomString(), Config.OCR_API_KEY)
         progressDialog.show()
-        scanViewModel.getCarDetail(ocrRequest).observe(this, android.arch.lifecycle.Observer { resource: Resource<BaseApiResponse>? ->
+        scanViewModel.authenOCRService(ocrAuthRequest).observe(this, android.arch.lifecycle.Observer { resource: Resource<BaseApiResponse>? ->
             progressDialog.dismiss()
             if (resource != null) {
                 when (resource.status) {
                     Resource.Status.SUCCESS -> {
-                        val carModels= resource.data as List<CarModel>
+                        val response = resource.data as OCRAuthenResponse
+                        if (response.code != 0)
+                            DialogHelper.materialDialog("Authentication with OCR service failed (${response.message}). Please try again", "Close", MaterialDialog.SingleButtonCallback { dialog, which ->
+                                dialog.dismiss()
+                            }, this@ScanCarActivity).show()
+                        else {
+                            if (!(response.data).asString.isNullOrBlank()) {
+                                scanCar((response.data).asString!!, bitmap)
+                            }
+                        }
+
+
+                    }
+                    else -> {
+                        if (!resource.exception?.exceptin?.message.isNullOrBlank())
+                            DialogHelper.materialDialog("Authentication with OCR service failed. Please try again", "Close", MaterialDialog.SingleButtonCallback { dialog, which ->
+                                dialog.dismiss()
+                            }, this@ScanCarActivity).show()
+                    }
+                }
+            } else {
+                DialogHelper.materialDialog("Authentication with OCR service failed. Please try again", "Close", MaterialDialog.SingleButtonCallback { dialog, which ->
+                    dialog.dismiss()
+                }, this@ScanCarActivity).show()
+
+            }
+        })
+    }
+
+    private fun scanCar(token:String,bitmap: Bitmap){
+        var ocrRequest=OCRRequest(Config.OCR_COUNTRY_CODE,Utility.convertBitmapToBase64(bitmap))
+        progressDialog.show()
+        scanViewModel.getCarDetail(token,ocrRequest).observe(this, android.arch.lifecycle.Observer { resource: Resource<BaseApiResponse>? ->
+            progressDialog.dismiss()
+            if (resource != null) {
+                when (resource.status) {
+                    Resource.Status.SUCCESS -> {
+                        val baseResponse= resource.data as JsonElement
+
+                        val carModels :List<CarModel> = Gson().fromJson(baseResponse, object : TypeToken<List<CarModel>>() {}.type)
+
                         loadInfo(carModels)
                     }
                     Resource.Status.ERROR -> {

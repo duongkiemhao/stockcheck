@@ -1,20 +1,27 @@
 package com.siliconstack.stockcheck.api
 
-import com.siliconstack.stockcheck.model.CarModel
-import com.siliconstack.stockcheck.model.OCRModel
-import com.siliconstack.stockcheck.model.OCRRequest
+import com.google.gson.JsonElement
+import com.siliconstack.stockcheck.BuildConfig
+import com.siliconstack.stockcheck.model.*
+import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 interface OCRApi {
-    @POST("DriverLicences")
-    fun getDriverLicence(@Body ocrRequest: OCRRequest): Call<OCRModel>
+
     @POST("Vins")
-    fun getVin(@Body ocrRequest: OCRRequest): Call<OCRModel>
+    fun getVin(@Header("Authorization") token :String, @Body ocrRequest: OCRRequest): Call<JsonElement>
     @POST("Regos")
-    fun getRego(@Body ocrRequest: OCRRequest): Call<OCRModel>
+    fun getRego(@Header("Authorization") token :String, @Body ocrRequest: OCRRequest): Call<JsonElement>
 
 
     @POST("GlassGuide/CarDetail")
-    fun getCarDetail(@Body ocrRequest: OCRRequest): Call<List<CarModel>>
+    fun getCarDetail(@Header("Authorization") token :String, @Body ocrRequest: OCRRequest): Call<JsonElement>
+
+    @POST(BuildConfig.SERVER_OCR_AUTH_URL+"Authorise")
+    fun authenOCR(@Body ocrAuthRequest: OCRAuthRequest): Call<OCRAuthenResponse>
+
+    @POST(BuildConfig.SERVER_OCR_URL+"DriverLicences")
+    fun getOCRDriverLicence(@Header("Authorization") token :String, @Body ocrRequest: OCRRequest): Call<JsonElement>
 }

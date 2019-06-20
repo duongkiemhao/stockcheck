@@ -1,5 +1,4 @@
 <resources>
+    <dimen name="camera_height">400dp</dimen>
     <bool name="isTablet">true</bool>
-
-
 </resources>

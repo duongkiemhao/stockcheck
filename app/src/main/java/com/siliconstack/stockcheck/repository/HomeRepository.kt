@@ -3,6 +3,7 @@ package com.siliconstack.stockcheck.repository
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
+import com.google.gson.JsonElement
 import com.siliconstack.stockcheck.AppApplication
 import com.siliconstack.stockcheck.api.GoogleVisionApi
 import com.siliconstack.stockcheck.api.OCRApi
@@ -12,6 +13,7 @@ import com.siliconstack.stockcheck.model.*
 import com.siliconstack.stockcheck.view.helper.PreferenceHelper
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
+import okhttp3.ResponseBody
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -29,20 +31,20 @@ class HomeRepository (val OCRApi: OCRApi,val teleserviceApi: TeleserviceApi,val 
                 .build().create(com.siliconstack.stockcheck.api.OCRApi::class.java)!!
     }
 
-    fun getDriverLicence(ocrRequest: OCRRequest): LiveData<Resource<BaseApiResponse>> {
-        var data = MutableLiveData<Resource<OCRModel>>()
-        createOcrApiInstance().getDriverLicence(ocrRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<OCRModel>(data) {})
+    fun getDriverLicence(token:String,ocrRequest: OCRRequest): LiveData<Resource<BaseApiResponse>> {
+        var data = MutableLiveData<Resource<JsonElement>>()
+        createOcrApiInstance().getOCRDriverLicence("Bearer $token",ocrRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<JsonElement>(data) {})
         return data as MutableLiveData<Resource<BaseApiResponse>>
     }
-    fun getVin(ocrRequest: OCRRequest): LiveData<Resource<BaseApiResponse>> {
-        var data = MutableLiveData<Resource<OCRModel>>()
-        createOcrApiInstance().getVin(ocrRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<OCRModel>(data) {})
+    fun getVin(token:String,ocrRequest: OCRRequest): LiveData<Resource<BaseApiResponse>> {
+        var data = MutableLiveData<Resource<JsonElement>>()
+        createOcrApiInstance().getVin("Bearer $token",ocrRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<JsonElement>(data) {})
         return data as MutableLiveData<Resource<BaseApiResponse>>
     }
 
-    fun getRego(ocrRequest: OCRRequest): LiveData<Resource<BaseApiResponse>> {
-        var data = MutableLiveData<Resource<OCRModel>>()
-        createOcrApiInstance().getRego(ocrRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<OCRModel>(data) {})
+    fun getRego(token:String,ocrRequest: OCRRequest): LiveData<Resource<BaseApiResponse>> {
+        var data = MutableLiveData<Resource<JsonElement>>()
+        createOcrApiInstance().getRego("Bearer $token",ocrRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<JsonElement>(data) {})
         return data as MutableLiveData<Resource<BaseApiResponse>>
     }
 
@@ -91,9 +93,14 @@ class HomeRepository (val OCRApi: OCRApi,val teleserviceApi: TeleserviceApi,val 
         googleVisionApi.get(url, googleVisionRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<GoogleVisionResponse>(data) {})
         return data as MutableLiveData<Resource<BaseApiResponse>>
     }
-    fun getCarDetail(ocrRequest: OCRRequest): LiveData<Resource<BaseApiResponse>> {
-        var data = MutableLiveData<Resource<List<CarModel>>>()
-        createOcrApiInstance().getCarDetail(ocrRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<List<CarModel>>(data) {})
+    fun getCarDetail(token:String,ocrRequest: OCRRequest): LiveData<Resource<BaseApiResponse>> {
+        var data = MutableLiveData<Resource<JsonElement>>()
+        createOcrApiInstance().getCarDetail("Bearer $token",ocrRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<JsonElement>(data) {})
+        return data as MutableLiveData<Resource<BaseApiResponse>>
+    }
+    fun getOCRAuth(ocrAuthRequest: OCRAuthRequest): LiveData<Resource<BaseApiResponse>> {
+        var data = MutableLiveData<Resource<OCRAuthenResponse>>()
+        OCRApi.authenOCR(ocrAuthRequest).enqueue(object : BaseRepository.Companion.MyRetrofitCallback<OCRAuthenResponse>(data) {})
         return data as MutableLiveData<Resource<BaseApiResponse>>
     }
 }

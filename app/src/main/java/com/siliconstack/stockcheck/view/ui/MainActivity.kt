@@ -165,26 +165,7 @@ class MainActivity : BaseActivity() {
         mainActivityBinding.btnScanCar.setOnClickListener {
             startActivity<ScanActivity>("scanEnum" to ScanActivity.SCAN_ENUM.CAR.ordinal)
         }
-        mainActivityBinding.txtTitle.setOnClickListener {
-            if (countHiddenMenuClick>=10) {
-                AppApplication.handler.removeCallbacksAndMessages(null)
-                countHiddenMenuClick=0
-                resources.getStringArray(R.array.url).forEachIndexed { index, s ->
-                    if(s==PreferenceHelper.getBaseURL()){
-                        DialogHelper.materialSingleChoiceDialog("Please select OCR Server url",index,  MaterialDialog.ListCallback { dialog, itemView, position, text ->
-                            PreferenceHelper.setBaseURL(text.toString())
 
-                        },this@MainActivity)
-                        return@setOnClickListener
-                    }
-                }
-            }
-            countHiddenMenuClick++
-            AppApplication.handler.removeCallbacksAndMessages(null)
-            AppApplication.handler.postDelayed({
-                countHiddenMenuClick = 0
-            }, 5000)
-        }
 
     }
 

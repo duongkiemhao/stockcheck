@@ -3,39 +3,39 @@ package com.siliconstack.stockcheck.model
 import com.google.gson.annotations.SerializedName
 
 data class CarModel(
-        @SerializedName("Color")
+        @SerializedName("color")
         var color: String?,
-        @SerializedName("Desc")
+        @SerializedName("desc")
         var desc: String?,
-        @SerializedName("Family")
+        @SerializedName("family")
         var family: String?,
-        @SerializedName("ImageURL")
+        @SerializedName("imageURL")
         var imageURL: String?,
-        @SerializedName("Items")
+        @SerializedName("items")
         var items: List<CarDetail>?,
-        @SerializedName("Make")
+        @SerializedName("make")
         var make: String?,
-        @SerializedName("Variant")
+        @SerializedName("variant")
         var variant: String?,
-        @SerializedName("Year")
+        @SerializedName("year")
         var year: String?
 ) {
     data class CarDetail(
-            @SerializedName("BodyType")
+            @SerializedName("bodyType")
             var bodyType: String?,
-            @SerializedName("Family")
+            @SerializedName("family")
             var family: String?,
-            @SerializedName("Make")
+            @SerializedName("make")
             var make: String?,
-            @SerializedName("Series")
+            @SerializedName("series")
             var series: String?,
-            @SerializedName("Transmission")
+            @SerializedName("transmission")
             var transmission: String?,
-            @SerializedName("VinNumber")
+            @SerializedName("vinNumber")
             var vINNUMBER: String?,
-            @SerializedName("Variant")
+            @SerializedName("variant")
             var variant: String?,
-            @SerializedName("Year")
+            @SerializedName("year")
             var year: String?
     )
 }

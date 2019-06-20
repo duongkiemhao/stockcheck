@@ -5,6 +5,7 @@ import android.arch.lifecycle.ViewModel
 import com.siliconstack.stockcheck.AppApplication
 import dagger.BindsInstance
 import dagger.Component
+import dagger.Provides
 import dagger.android.AndroidInjectionModule
 
 import javax.inject.Singleton
@@ -12,8 +13,9 @@ import javax.inject.Singleton
 /**
  * Created by Antoni Castejón on 03/01/2018.
  */
+
 @Singleton
-@Component(modules = arrayOf(AndroidInjectionModule::class, ActivityModule::class,AppModule::class))
+@Component(modules = [AndroidInjectionModule::class, ActivityModule::class, AppModule::class])
 interface AppComponent{
     @Component.Builder
     interface Builder {

@@ -14,7 +14,7 @@ android {
         minSdkVersion 24
         targetSdkVersion 27
         versionCode 1
-        versionName "1.0.9"
+        versionName "1.0.10"
         multiDexEnabled true
         manifestPlaceholders = [HOCKEYAPP_APP_ID: "48d36a0a45fc4393bf1b3ba6d91a609e",applicationIdWithSuffix: "${applicationId}" ]
 
@@ -34,9 +34,10 @@ android {
             debuggable true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "SERVER_OCR_URL", '"http://192.168.1.163/ocr/"'
             buildConfigField "String", "SERVER_TELESERVICE_URL", '"http://13.210.63.37:8090/Teleservice/api/"'
             buildConfigField "String", "GOOGLE_VISION_URL", '"https://vision.googleapis.com/v1/images:annotate?key="'
+            buildConfigField "String", "SERVER_OCR_AUTH_URL", '"http://192.168.1.163:8091/v1/"'
+            buildConfigField "String", "SERVER_OCR_URL", '"http://192.168.1.163:8090/v1/"'
             applicationIdSuffix ".debug"
             resValue "string", "app_name", "StockCheck Debug"
             manifestPlaceholders = [ applicationIdWithSuffix: defaultApplicationId + applicationIdSuffix ]
@@ -44,10 +45,12 @@ android {
 
         production {
             initWith debug
-            buildConfigField "String", "SERVER_OCR_URL", '"https://ocr.siliconstack.com.au/"'
             applicationIdSuffix ""
             resValue "string", "app_name", "StockCheck"
             manifestPlaceholders = [ applicationIdWithSuffix: defaultApplicationId + applicationIdSuffix ]
+            buildConfigField "String", "SERVER_OCR_AUTH_URL", '"https://auth.siliconlens.com.au/v1/"'
+            buildConfigField "String", "SERVER_OCR_URL", '"https://api.siliconlens.com.au/v1/"'
+
         }
 
     }
@@ -186,7 +189,7 @@ dependencies {
     compile 'com.google.apis:google-api-services-vision:v1-rev357-1.22.0'
 
     //camera
-//    compile 'com.otaliastudios:cameraview:1.5.1'
+    compile 'com.otaliastudios:cameraview:1.6.1'
 
     //swipe
     compile 'com.daimajia.swipelayout:library:1.2.0@aar'
