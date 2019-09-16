@@ -48,42 +48,42 @@ import org.jetbrains.anko.startActivity
 import java.io.File
 import java.util.*
 import javax.inject.Inject
-import kotlin.collections.ArrayList
 
 
-class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityListener {
+class ScanActivity : BaseActivity(), HasSupportFragmentInjector, ScanActivityListener {
 
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
     lateinit var scanActivityBinding: ScanActivityBinding
-    lateinit var scanViewModel:ScanViewModel
+    lateinit var scanViewModel: ScanViewModel
 
     //lateinit var progressDialog: MaterialDialog
-    val REQUEST_QRCODE=101
-    val REQUEST_BARCODE=100
-    val REQUEST_CHOOSE_FROM_GALLERY=102
-    val REQUEST_CAR=103
+    val REQUEST_QRCODE = 101
+    val REQUEST_BARCODE = 100
+    val REQUEST_CHOOSE_FROM_GALLERY = 102
+    val REQUEST_CAR = 103
     lateinit var rxPermissions: RxPermissions
-    var result:String?=null
-    var scanEnum:Int = 0
+    var result: String? = null
+    var scanEnum: Int = 0
     //spinner
-     var listLocation:ArrayList<FilterDialogModel> = arrayListOf()
-    var listFloor:ArrayList<FilterDialogModel> = arrayListOf()
-    var listName:ArrayList<FilterDialogModel> = arrayListOf()
-     var locationModel:FilterDialogModel?=null
-    var floorModel:FilterDialogModel?=null
-    var nameModel:FilterDialogModel?=null
-    var scanResultFragment:ScanResultFragment?=null
-    var ocrModel: OCRModel?=null
+    var listLocation: ArrayList<FilterDialogModel> = arrayListOf()
+    var listFloor: ArrayList<FilterDialogModel> = arrayListOf()
+    var listName: ArrayList<FilterDialogModel> = arrayListOf()
+    var locationModel: FilterDialogModel? = null
+    var floorModel: FilterDialogModel? = null
+    var nameModel: FilterDialogModel? = null
+    var scanResultFragment: ScanResultFragment? = null
+    var ocrModel: OCRModel? = null
     var photoFile: File? = null
+
     enum class SCANTYPE {
-        DRIVERLICENCE, VIN,REGO
+        DRIVERLICENCE, VIN, REGO
     }
 
     //scan
-    enum class SCAN_ENUM{
-        VIN, REGO,BARCODE,QRCODE,DRIVER,CAR
+    enum class SCAN_ENUM {
+        VIN, REGO, BARCODE, QRCODE, DRIVER, CAR
     }
 
     override fun supportFragmentInjector() = dispatchingAndroidInjector
@@ -96,7 +96,7 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
         setTranslucentToolbar()
 
         EventBus.getDefault().register(this)
-        scanEnum=intent.getIntExtra("scanEnum",0)
+        scanEnum = intent.getIntExtra("scanEnum", 0)
         setListener()
         initInfo()
 
@@ -115,12 +115,12 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
 
 
     @SuppressLint("CheckResult")
-    fun openCameraActivity(){
+    fun openCameraActivity() {
         rxPermissions
-                .request(Manifest.permission.CAMERA , Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .request(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 .subscribe { it: Boolean? ->
                     if (it!!) {
-                        when(scanEnum){
+                        when (scanEnum) {
                             SCAN_ENUM.VIN.ordinal ->
                                 startActivity<CameraActivity>()
                             SCAN_ENUM.REGO.ordinal ->
@@ -129,7 +129,7 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
                                 val intent = Intent(this, ZXingScannerActivity::class.java)
                                 startActivityForResult(intent, REQUEST_BARCODE)
                             }
-                            SCAN_ENUM.QRCODE.ordinal  -> {
+                            SCAN_ENUM.QRCODE.ordinal -> {
                                 val intent = Intent(this, ZXingScannerActivity::class.java)
                                 startActivityForResult(intent, REQUEST_QRCODE)
                             }
@@ -137,7 +137,7 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
                                 startActivity<CameraActivity>()
                             SCAN_ENUM.CAR.ordinal ->
                                 startActivity<CameraActivity>()
-                                //openNativeCamera()
+                            //openNativeCamera()
                         }
                     }
                 }
@@ -158,7 +158,7 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
             }
             photoFile?.let {
                 val photoURI = FileProvider.getUriForFile(this,
-                        BuildConfig.APPLICATION_ID+".fileprovider", it)
+                        BuildConfig.APPLICATION_ID + ".fileprovider", it)
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_CAR)
             }
@@ -168,61 +168,61 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        when(requestCode){
-            REQUEST_QRCODE ->{
-                when(resultCode){
-                    Activity.RESULT_OK ->{
-                        val result=data!!.getStringExtra("result")
+        when (requestCode) {
+            REQUEST_QRCODE -> {
+                when (resultCode) {
+                    Activity.RESULT_OK -> {
+                        val result = data!!.getStringExtra("result")
                         scanActivityBinding.ediScanResult.setText(result)
                     }
                 }
             }
-            REQUEST_BARCODE->{
-                when(resultCode){
-                    Activity.RESULT_OK ->{
-                        val result=data!!.getStringExtra("result")
+            REQUEST_BARCODE -> {
+                when (resultCode) {
+                    Activity.RESULT_OK -> {
+                        val result = data!!.getStringExtra("result")
                         scanActivityBinding.ediScanResult.setText(result)
                     }
                 }
             }
-            REQUEST_CHOOSE_FROM_GALLERY ->{
-                when(resultCode){
-                    Activity.RESULT_OK->{
-                        val uri=data?.data
+            REQUEST_CHOOSE_FROM_GALLERY -> {
+                when (resultCode) {
+                    Activity.RESULT_OK -> {
+                        val uri = data?.data
                         CropImage.activity(uri)
                                 .start(this)
                     }
                 }
             }
-            CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE ->{
+            CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE -> {
                 val result = CropImage.getActivityResult(data);
-                    if (resultCode == RESULT_OK) {
-                        val resultUri = result.uri
-                        val resizedBitmap = Utility.scaleBitmapDown(MediaStore.Images.Media.getBitmap(contentResolver, resultUri),840)
-                        scanActivityBinding.imageView.setImageBitmap(resizedBitmap)
-                        when(scanEnum){
-                            SCAN_ENUM.DRIVER.ordinal ->{
-                                authOCRService(resizedBitmap,SCAN_ENUM.DRIVER)
-                            }
-                            SCAN_ENUM.VIN.ordinal ->{
-                                authOCRService(resizedBitmap,SCAN_ENUM.VIN)
-                            }
-                            SCAN_ENUM.REGO.ordinal ->{
-                                authOCRService(resizedBitmap,SCAN_ENUM.REGO)
-                            }
-                            SCAN_ENUM.CAR.ordinal ->{
-                                startActivity<ScanCarActivity>("url" to Utility.saveBitmapToFile(resizedBitmap))
-                            }
+                if (resultCode == RESULT_OK) {
+                    val resultUri = result.uri
+                    val resizedBitmap = Utility.scaleBitmapDown(MediaStore.Images.Media.getBitmap(contentResolver, resultUri), 840)
+                    scanActivityBinding.imageView.setImageBitmap(resizedBitmap)
+                    when (scanEnum) {
+                        SCAN_ENUM.DRIVER.ordinal -> {
+                            authOCRService(resizedBitmap, SCAN_ENUM.DRIVER)
                         }
-
-
-                    } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-
+                        SCAN_ENUM.VIN.ordinal -> {
+                            authOCRService(resizedBitmap, SCAN_ENUM.VIN)
+                        }
+                        SCAN_ENUM.REGO.ordinal -> {
+                            authOCRService(resizedBitmap, SCAN_ENUM.REGO)
+                        }
+                        SCAN_ENUM.CAR.ordinal -> {
+                            startActivity<ScanCarActivity>("url" to Utility.saveBitmapToFile(resizedBitmap))
+                        }
                     }
+
+
+                } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+
+                }
             }
-            REQUEST_CAR ->{
-                when(resultCode){
-                    Activity.RESULT_OK ->{
+            REQUEST_CAR -> {
+                when (resultCode) {
+                    Activity.RESULT_OK -> {
                         photoFile?.let {
                             startActivity<ScanCarActivity>("url" to it.path)
                         }
@@ -237,26 +237,26 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
             finish()
         }
         scanActivityBinding.btnConfirm.setOnClickListener {
-            if(scanActivityBinding.ediScanResult.text.isNullOrBlank())
+            if (scanActivityBinding.ediScanResult.text.isNullOrBlank())
                 return@setOnClickListener
-            val scanItem=mainViewModel.isScanTextExist(scanActivityBinding.ediScanResult.text.toString().trim())
-            if(scanItem!=null){
-                val view=LayoutInflater.from(this).inflate(R.layout.view_vehicle_found,null)
-                view.findViewById<TextView>(R.id.txt_value).text=scanItem.scanText
-                view.findViewById<TextView>(R.id.txt_location).text=scanItem.locationName
-                view.findViewById<TextView>(R.id.txt_floor).text=scanItem.floorName
-                view.findViewById<TextView>(R.id.txt_bay).text=scanItem.bayNumber
-                view.findViewById<TextView>(R.id.txt_operator).text=scanItem.operatorName
-                view.findViewById<TextView>(R.id.txt_timestamp).text=DateUtility.parseDateToDateTimeStr(Config.COMBINE_DATE_TIME_FORMAT,Date(scanItem.timestamp?:0))
-                DialogHelper.materialCustomViewDialog("Matching Vehicle Found!",view,"Ok","Cancel", MaterialDialog.SingleButtonCallback { dialog, which ->
+            val scanItem = mainViewModel.isScanTextExist(scanActivityBinding.ediScanResult.text.toString().trim())
+            if (scanItem != null) {
+                val view = LayoutInflater.from(this).inflate(R.layout.view_vehicle_found, null)
+                view.findViewById<TextView>(R.id.txt_value).text = scanItem.scanText
+                view.findViewById<TextView>(R.id.txt_location).text = scanItem.locationName
+                view.findViewById<TextView>(R.id.txt_floor).text = scanItem.floorName
+                view.findViewById<TextView>(R.id.txt_bay).text = scanItem.bayNumber
+                view.findViewById<TextView>(R.id.txt_operator).text = scanItem.operatorName
+                view.findViewById<TextView>(R.id.txt_timestamp).text = DateUtility.parseDateToDateTimeStr(Config.COMBINE_DATE_TIME_FORMAT, Date(scanItem.timestamp
+                        ?: 0))
+                DialogHelper.materialCustomViewDialog("Matching Vehicle Found!", view, "Ok", "Cancel", MaterialDialog.SingleButtonCallback { dialog, which ->
                     insertToDB()
                     dialog.dismiss()
                 }, MaterialDialog.SingleButtonCallback { dialog, which ->
                     dialog.dismiss()
-                },this@ScanActivity).show()
+                }, this@ScanActivity).show()
 
-            }
-            else {
+            } else {
                 insertToDB()
             }
         }
@@ -265,19 +265,19 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
         }
         scanActivityBinding.btnGallery.setOnClickListener {
             val galleryIntent = Intent(Intent.ACTION_PICK,
-                            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-                    startActivityForResult(galleryIntent, REQUEST_CHOOSE_FROM_GALLERY)
+                    android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            startActivityForResult(galleryIntent, REQUEST_CHOOSE_FROM_GALLERY)
         }
 
         scanActivityBinding.txtLocation.setOnClickListener {
             DialogHelper.materialProgressDialog("", this, FilterListAdapter(listLocation),
                     MaterialDialog.SingleButtonCallback { dialog, which ->
-                        listLocation= (dialog.recyclerView.adapter as FilterListAdapter).items
+                        listLocation = (dialog.recyclerView.adapter as FilterListAdapter).items
                         listLocation.forEach {
                             if (it.isSelect) {
-                                locationModel=it
-                                scanActivityBinding.txtLocation.text=locationModel?.name
-                                PreferenceSetting.locationSetting=it
+                                locationModel = it
+                                scanActivityBinding.txtLocation.text = locationModel?.name
+                                PreferenceSetting.locationSetting = it
                                 return@SingleButtonCallback
                             }
                         }
@@ -287,12 +287,12 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
         scanActivityBinding.txtFloor.setOnClickListener {
             DialogHelper.materialProgressDialog("", this, FilterListAdapter(listFloor),
                     MaterialDialog.SingleButtonCallback { dialog, which ->
-                        listFloor= (dialog.recyclerView.adapter as FilterListAdapter).items
+                        listFloor = (dialog.recyclerView.adapter as FilterListAdapter).items
                         listFloor.forEach {
                             if (it.isSelect) {
-                                floorModel=it
-                                scanActivityBinding.txtFloor.text=floorModel?.name
-                                PreferenceSetting.floorSetting=it
+                                floorModel = it
+                                scanActivityBinding.txtFloor.text = floorModel?.name
+                                PreferenceSetting.floorSetting = it
                                 return@SingleButtonCallback
                             }
                         }
@@ -302,12 +302,12 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
         scanActivityBinding.txtOperator.setOnClickListener {
             DialogHelper.materialProgressDialog("", this, FilterListAdapter(listName),
                     MaterialDialog.SingleButtonCallback { dialog, which ->
-                        listName= (dialog.recyclerView.adapter as FilterListAdapter).items
+                        listName = (dialog.recyclerView.adapter as FilterListAdapter).items
                         listName.forEach {
                             if (it.isSelect) {
-                                nameModel=it
-                                scanActivityBinding.txtOperator.text=nameModel?.name
-                                PreferenceSetting.nameSetting=it
+                                nameModel = it
+                                scanActivityBinding.txtOperator.text = nameModel?.name
+                                PreferenceSetting.nameSetting = it
                                 return@SingleButtonCallback
                             }
                         }
@@ -321,15 +321,15 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
 
     }
 
-    fun insertToDB(){
-        val locationId = locationModel?.code?.toIntOrNull()?:0
-        val floorId =  floorModel?.code?.toIntOrNull()?:0
-        val nameId =  nameModel?.code?.toIntOrNull()?:0
+    fun insertToDB() {
+        val locationId = locationModel?.code?.toIntOrNull() ?: 0
+        val floorId = floorModel?.code?.toIntOrNull() ?: 0
+        val nameId = nameModel?.code?.toIntOrNull() ?: 0
         val date = Date()
         val mainModel = MainModel(0, scanActivityBinding.ediScanResult.text.toString(),
                 date.time,
                 if (locationId == 0) null else locationId, if (floorId == 0) null else floorId
-                , if (nameId == 0) null else nameId, scanActivityBinding.ediBayNumber.text.toString(),getType())
+                , if (nameId == 0) null else nameId, scanActivityBinding.ediBayNumber.text.toString(), getType())
         insertAPI(mainModel)
 
         finish()
@@ -337,20 +337,20 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
     }
 
 
-    fun insertAPI(mainModel: MainModel){
+    fun insertAPI(mainModel: MainModel) {
         progressDialog.show()
         mainViewModel.postStockCheck(mainModel).observe(this, android.arch.lifecycle.Observer { it: Resource<BaseApiResponse>? ->
             it?.let { resource: Resource<BaseApiResponse> ->
                 when (resource.status) {
                     Resource.Status.SUCCESS -> {
                         var list: List<MainModel>? = resource.data as List<MainModel>
-                        list?.forEach{ mainModel ->
+                        list?.forEach { mainModel ->
                             mainViewModel.addMainModel(mainModel)
                             return@let
                         }
                     }
                     Resource.Status.ERROR -> {
-                        Toasty.error(this@ScanActivity,resource.exception?.exceptin?.message.toString()).show()
+                        Toasty.error(this@ScanActivity, resource.exception?.exceptin?.message.toString()).show()
                     }
                 }
             }
@@ -359,8 +359,8 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
     }
 
 
-    fun getType():Int{
-        return when(scanEnum){
+    fun getType(): Int {
+        return when (scanEnum) {
             SCAN_ENUM.VIN.ordinal ->
                 1
             SCAN_ENUM.REGO.ordinal ->
@@ -375,8 +375,8 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
         }
     }
 
-    fun getToolbarTitle():String{
-        return when(scanEnum){
+    fun getToolbarTitle(): String {
+        return when (scanEnum) {
             SCAN_ENUM.VIN.ordinal ->
                 "SCAN VIN"
             SCAN_ENUM.REGO.ordinal ->
@@ -391,40 +391,39 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
 
         }
     }
+
     fun initInfo() {
         rxPermissions = RxPermissions(this)
-        scanActivityBinding.txtTitle.text=getToolbarTitle()
+        scanActivityBinding.txtTitle.text = getToolbarTitle()
 
-        scanActivityBinding.txtLocation.text=PreferenceSetting.locationSetting?.name?:""
-        locationModel=PreferenceSetting.locationSetting
-        scanActivityBinding.txtFloor.text=PreferenceSetting.floorSetting?.name?:""
-        floorModel=PreferenceSetting.floorSetting
-        scanActivityBinding.txtOperator.text=PreferenceSetting.nameSetting?.name?:""
-        nameModel=PreferenceSetting.nameSetting
+        scanActivityBinding.txtLocation.text = PreferenceSetting.locationSetting?.name ?: ""
+        locationModel = PreferenceSetting.locationSetting
+        scanActivityBinding.txtFloor.text = PreferenceSetting.floorSetting?.name ?: ""
+        floorModel = PreferenceSetting.floorSetting
+        scanActivityBinding.txtOperator.text = PreferenceSetting.nameSetting?.name ?: ""
+        nameModel = PreferenceSetting.nameSetting
 
 
-        if(scanEnum==SCAN_ENUM.VIN.ordinal || scanEnum==SCAN_ENUM.REGO.ordinal || scanEnum==SCAN_ENUM.DRIVER.ordinal
-        || scanEnum==SCAN_ENUM.CAR.ordinal)
-        {
-            scanActivityBinding.btnGallery.visibility=View.VISIBLE
-            scanActivityBinding.btnCamera.visibility=View.VISIBLE
-        }
-        else{
-            scanActivityBinding.btnGallery.visibility=View.GONE
-            scanActivityBinding.btnCamera.visibility=View.VISIBLE
+        if (scanEnum == SCAN_ENUM.VIN.ordinal || scanEnum == SCAN_ENUM.REGO.ordinal || scanEnum == SCAN_ENUM.DRIVER.ordinal
+                || scanEnum == SCAN_ENUM.CAR.ordinal) {
+            scanActivityBinding.btnGallery.visibility = View.VISIBLE
+            scanActivityBinding.btnCamera.visibility = View.VISIBLE
+        } else {
+            scanActivityBinding.btnGallery.visibility = View.GONE
+            scanActivityBinding.btnCamera.visibility = View.VISIBLE
         }
 
-        this.listLocation.add(FilterDialogModel("--none--","0","0"==PreferenceSetting.locationSetting?.code?:0))
+        this.listLocation.add(FilterDialogModel("--none--", "0", "0" == PreferenceSetting.locationSetting?.code ?: 0))
         mainViewModel.locationDAO.getAll().forEach {
-            this.listLocation.add(FilterDialogModel(it.name,it.id.toString(),it.id.toString()==PreferenceSetting.locationSetting?.code?:"0"))
+            this.listLocation.add(FilterDialogModel(it.name, it.id.toString(), it.id.toString() == PreferenceSetting.locationSetting?.code ?: "0"))
         }
-        this.listFloor.add(FilterDialogModel("--none--","0","0"==PreferenceSetting.floorSetting?.code?:"0"))
+        this.listFloor.add(FilterDialogModel("--none--", "0", "0" == PreferenceSetting.floorSetting?.code ?: "0"))
         mainViewModel.floorDAO.getAll().forEach {
-            this.listFloor.add(FilterDialogModel(it.name,it.id.toString(),it.id.toString()==PreferenceSetting.floorSetting?.code?:"0"))
+            this.listFloor.add(FilterDialogModel(it.name, it.id.toString(), it.id.toString() == PreferenceSetting.floorSetting?.code ?: "0"))
         }
-        this.listName.add(FilterDialogModel("--none--","0","0"==PreferenceSetting.nameSetting?.code?:"0"))
+        this.listName.add(FilterDialogModel("--none--", "0", "0" == PreferenceSetting.nameSetting?.code ?: "0"))
         mainViewModel.nameDAO.getAll().forEach {
-            this.listName.add(FilterDialogModel(it.name,it.id.toString(),it.id.toString()==PreferenceSetting.nameSetting?.code?:"0"))
+            this.listName.add(FilterDialogModel(it.name, it.id.toString(), it.id.toString() == PreferenceSetting.nameSetting?.code ?: "0"))
         }
 
         setPhotoDimension()
@@ -434,22 +433,22 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMessageEvent(mainEventBus: MainEventBus) {
         mainEventBus.bitmapURL?.let {
-            val bitmap=Utility.getBitmapFromURL(it)
+            val bitmap = Utility.getBitmapFromURL(it)
 
-            when(scanEnum){
-                SCAN_ENUM.DRIVER.ordinal ->{
+            when (scanEnum) {
+                SCAN_ENUM.DRIVER.ordinal -> {
                     scanActivityBinding.imageView.setImageBitmap(bitmap)
-                    authOCRService(bitmap,SCAN_ENUM.DRIVER)
+                    authOCRService(bitmap, SCAN_ENUM.DRIVER)
                 }
-                SCAN_ENUM.VIN.ordinal ->{
+                SCAN_ENUM.VIN.ordinal -> {
                     scanActivityBinding.imageView.setImageBitmap(bitmap)
-                    authOCRService(bitmap,SCAN_ENUM.VIN)
+                    authOCRService(bitmap, SCAN_ENUM.VIN)
                 }
-                SCAN_ENUM.REGO.ordinal ->{
+                SCAN_ENUM.REGO.ordinal -> {
                     scanActivityBinding.imageView.setImageBitmap(bitmap)
-                    authOCRService(bitmap,SCAN_ENUM.REGO)
+                    authOCRService(bitmap, SCAN_ENUM.REGO)
                 }
-                SCAN_ENUM.CAR.ordinal ->{
+                SCAN_ENUM.CAR.ordinal -> {
                     startActivity<ScanCarActivity>("url" to it)
                 }
 
@@ -460,28 +459,27 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
     }
 
 
-    fun scanDriverLicenceAPI(token:String,bitmap: Bitmap){
-        val ocrRequest=OCRRequest(Config.OCR_COUNTRY_CODE,Utility.convertBitmapToBase64(bitmap))
+    fun scanDriverLicenceAPI(token: String, bitmap: Bitmap) {
+        val ocrRequest = OCRRequest(Config.OCR_COUNTRY_CODE, Utility.convertBitmapToBase64(bitmap))
         progressDialog.show()
-        scanViewModel.getDriverLicence(token,ocrRequest).observe(this, android.arch.lifecycle.Observer { resource: Resource<BaseApiResponse>? ->
+        scanViewModel.getDriverLicence(token, ocrRequest).observe(this, android.arch.lifecycle.Observer { resource: Resource<BaseApiResponse>? ->
             progressDialog.dismiss()
             if (resource != null) {
                 when (resource.status) {
                     Resource.Status.SUCCESS -> {
-                        val baseResponse= resource.data as JsonElement
-
-                            val response=Gson().fromJson(baseResponse,OCRAuthenResponse::class.java) as OCRAuthenResponse
-                            if(response.code==0){
-                                ocrModel=Gson().fromJson(response.data.asJsonObject,OCRModel::class.java)
-                                showResultDialog()
-                            }
-                            else{
-                                Toasty.info(this@ScanActivity,"Sorry, No text found, please try again").show()
-                            }
+                        val baseResponse = resource.data as JsonElement
+                        val response = Gson().fromJson(baseResponse, OCRAuthenResponse::class.java) as OCRAuthenResponse
+                        if (response.code == 0) {
+                            ocrModel = Gson().fromJson(response.data.asJsonObject, OCRModel::class.java)
+                            showResultDialog()
+                        } else {
+                            Toasty.info(this@ScanActivity, "Sorry, No text found, please try again").show()
+                        }
 
                     }
                     Resource.Status.ERROR -> {
-                        Toasty.error(this@ScanActivity,resource.exception?.exceptin?.message?:"").show()
+                        Toasty.error(this@ScanActivity, resource.exception?.exceptin?.message
+                                ?: "").show()
 
                     }
                     else -> {
@@ -492,36 +490,28 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
         })
     }
 
-    fun scanVinAPI(token:String,bitmap: Bitmap){
-        var ocrRequest=OCRRequest(Config.OCR_COUNTRY_CODE, Utility.convertBitmapToBase64(bitmap))
-
+    fun scanVinAPI(token: String, bitmap: Bitmap) {
+        val ocrRequest = OCRRequest(Config.OCR_COUNTRY_CODE, Utility.convertBitmapToBase64(bitmap))
         progressDialog.show()
-        scanViewModel.getVin(token,ocrRequest).observe(this, android.arch.lifecycle.Observer { resource: Resource<BaseApiResponse>? ->
+        scanViewModel.getVin(token, ocrRequest).observe(this, android.arch.lifecycle.Observer { resource: Resource<BaseApiResponse>? ->
             progressDialog.dismiss()
             if (resource != null) {
                 when (resource.status) {
                     Resource.Status.SUCCESS -> {
-                        val baseResponse= resource.data as JsonElement
-                        if(!PreferenceHelper.getBaseURL().contains("192.168",true)){
-                            val response=Gson().fromJson(baseResponse,OCRAuthenResponse::class.java) as OCRAuthenResponse
-                            if(response.code==0){
-                                ocrModel=Gson().fromJson(response.data.asJsonObject,OCRModel::class.java)
-                                scanActivityBinding.ediScanResult.setText(ocrModel!!.rego)
+                        val baseResponse = resource.data as JsonElement
+                        val response = Gson().fromJson(baseResponse, OCRAuthenResponse::class.java) as OCRAuthenResponse
+                        if (response.code == 0) {
+                                ocrModel = Gson().fromJson(response.data.asJsonObject, OCRModel::class.java)
+                                scanActivityBinding.ediScanResult.setText(ocrModel!!.vin)
+                            } else {
+                                Toasty.info(this@ScanActivity, "Sorry, No text found, please try again").show()
                             }
-                            else{
-                                Toasty.info(this@ScanActivity,"Sorry, No text found, please try again").show()
-                            }
-                        }
-                        else{
-                            ocrModel= Gson().fromJson(baseResponse,OCRModel::class.java)
-                            scanActivityBinding.ediScanResult.setText(ocrModel!!.vin)
-                        }
-
 
                     }
                     Resource.Status.ERROR -> {
                         progressDialog.dismiss()
-                        Toasty.error(this@ScanActivity,resource.exception?.exceptin?.message?:"").show()
+                        Toasty.error(this@ScanActivity, resource.exception?.exceptin?.message
+                                ?: "").show()
 
                     }
                 }
@@ -529,34 +519,28 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
         })
     }
 
-    fun scanRegoAPI(token:String,bitmap: Bitmap){
-        var ocrRequest=OCRRequest(Config.OCR_COUNTRY_CODE,Utility.convertBitmapToBase64(bitmap))
+    fun scanRegoAPI(token: String, bitmap: Bitmap) {
+        var ocrRequest = OCRRequest(Config.OCR_COUNTRY_CODE, Utility.convertBitmapToBase64(bitmap))
 
         progressDialog.show()
-        scanViewModel.getRego(token,ocrRequest).observe(this, android.arch.lifecycle.Observer { resource: Resource<BaseApiResponse>? ->
+        scanViewModel.getRego(token, ocrRequest).observe(this, android.arch.lifecycle.Observer { resource: Resource<BaseApiResponse>? ->
             progressDialog.dismiss()
             if (resource != null) {
                 when (resource.status) {
                     Resource.Status.SUCCESS -> {
-                        val baseResponse= resource.data as JsonElement
-                        if(!PreferenceHelper.getBaseURL().contains("192.168",true)){
-                            val response=Gson().fromJson(baseResponse,OCRAuthenResponse::class.java) as OCRAuthenResponse
-                            if(response.code==0){
-                                ocrModel=Gson().fromJson(response.data.asJsonObject,OCRModel::class.java)
+                        val baseResponse = resource.data as JsonElement
+                        val response = Gson().fromJson(baseResponse, OCRAuthenResponse::class.java) as OCRAuthenResponse
+                        if (response.code == 0) {
+                                ocrModel = Gson().fromJson(response.data.asJsonObject, OCRModel::class.java)
                                 scanActivityBinding.ediScanResult.setText(ocrModel!!.rego)
+                            } else {
+                                Toasty.info(this@ScanActivity, "Sorry, No text found, please try again").show()
                             }
-                            else{
-                                Toasty.info(this@ScanActivity,"Sorry, No text found, please try again").show()
-                            }
-                        }
-                        else{
-                            ocrModel= Gson().fromJson(baseResponse,OCRModel::class.java)
-                            scanActivityBinding.ediScanResult.setText(ocrModel!!.rego)
-                        }
 
                     }
                     Resource.Status.ERROR -> {
-                        Toasty.error(this@ScanActivity,resource.exception?.exceptin?.message?:"").show()
+                        Toasty.error(this@ScanActivity, resource.exception?.exceptin?.message
+                                ?: "").show()
 
                     }
                 }
@@ -565,11 +549,11 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
     }
 
 
-    fun showResultDialog(){
-        if(ocrModel==null)
+    fun showResultDialog() {
+        if (ocrModel == null)
             return
-        scanResultFragment=ScanResultFragment.newInstance(ocrModel!!,
-                    (scanActivityBinding.toolbar.height+scanActivityBinding.layoutImage.height).toInt())
+        scanResultFragment = ScanResultFragment.newInstance(ocrModel!!,
+                (scanActivityBinding.toolbar.height + scanActivityBinding.layoutImage.height).toInt())
         scanResultFragment?.show(supportFragmentManager, ScanResultFragment::class.simpleName)
     }
 
@@ -579,12 +563,12 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
     }
 
     override fun save(ocrModel: OCRModel) {
-        scanActivityBinding.ediScanResult.setText(ocrModel.driverLicenceNumber?:"")
+        scanActivityBinding.ediScanResult.setText(ocrModel.driverLicenceNumber ?: "")
     }
 
 
-    private fun authOCRService(bitmap: Bitmap,scanEnum: ScanActivity.SCAN_ENUM) {
-        val ocrAuthRequest = OCRAuthRequest(Config.OCR_SYSTEM_CODE, "Android OS:"+ Build.VERSION.RELEASE+" v"+Utility.getAppVersionName(), Utility.randomString(), Config.OCR_API_KEY)
+    private fun authOCRService(bitmap: Bitmap, scanEnum: ScanActivity.SCAN_ENUM) {
+        val ocrAuthRequest = OCRAuthRequest(Config.OCR_SYSTEM_CODE, "Android OS:" + Build.VERSION.RELEASE + " v" + Utility.getAppVersionName(), Utility.randomString(), Config.OCR_API_KEY)
         progressDialog.show()
         scanViewModel.authenOCRService(ocrAuthRequest).observe(this, android.arch.lifecycle.Observer { resource: Resource<BaseApiResponse>? ->
             progressDialog.dismiss()
@@ -598,7 +582,7 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
                             }, this@ScanActivity).show()
                         else {
                             if (!(response.data).asString.isNullOrBlank()) {
-                                when(scanEnum){
+                                when (scanEnum) {
                                     SCAN_ENUM.DRIVER -> scanDriverLicenceAPI((response.data).asString!!, bitmap)
                                     SCAN_ENUM.REGO -> scanRegoAPI((response.data).asString!!, bitmap)
                                     SCAN_ENUM.VIN -> scanVinAPI((response.data).asString!!, bitmap)
@@ -624,19 +608,19 @@ class ScanActivity : BaseActivity(), HasSupportFragmentInjector , ScanActivityLi
         })
     }
 
-    private fun setPhotoDimension(){
+    private fun setPhotoDimension() {
 
-        val displayMetrics= DisplayMetrics()
+        val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
-        val width= displayMetrics.widthPixels
-        val height=resources.getDimension(R.dimen.camera_height).toInt()
-        scanActivityBinding.imageView.layoutParams.width=width*80/100
-        scanActivityBinding.imageView.layoutParams.height=height*80/100
+        val width = displayMetrics.widthPixels
+        val height = resources.getDimension(R.dimen.camera_height).toInt()
+        scanActivityBinding.imageView.layoutParams.width = width * 80 / 100
+        scanActivityBinding.imageView.layoutParams.height = height * 80 / 100
         scanActivityBinding.imageView.requestLayout()
 
     }
 }
 
-interface ScanActivityListener{
+interface ScanActivityListener {
     fun save(ocrModel: OCRModel)
 }
